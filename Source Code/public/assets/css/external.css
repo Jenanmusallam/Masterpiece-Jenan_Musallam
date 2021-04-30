@@ -4496,3 +4496,52 @@ img.mfp-img {
     border-right: 6px solid transparent;
     border-bottom: 6px solid #be2626;
 }
+/* Test  */
+.login-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-container .login-form-1 img,
+.login-container .login-form-2 img {
+ margin: auto;
+ height: 25vh;
+ display: block;
+ margin-bottom: 2rem;
+ margin-top: 2rem;
+}
+
+.login-form-1 {
+    padding: 2rem 8rem !important;
+    background: #ea236faf;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    height:102.5vh !important
+}
+
+.login-form-1 h3,
+.login-form-2 h3 {
+    text-align: center;
+    margin-bottom: 12%;
+    color: #fff;
+    text-shadow: 2px -2px black;
+}
+
+.login-form-2 {
+    /* height: 91vh !important; */
+    padding: 2rem 8rem !important;
+    background: #20acd29f;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.login-container .login-form-2 .btn--primary,
+.login-container .login-form-1 .btn--primary {
+    background-color: #000;
+    color:#fff;
+}
+
+.login-container .login-form-2 .btn--primary:hover,
+.login-container .login-form-1 .btn--primary:hover {
+    background-color: #fff;
+    color: #000;
+}

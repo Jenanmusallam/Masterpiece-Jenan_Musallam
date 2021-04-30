@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class loginRegisterController extends Controller
 {
-     public function index()
+    public function index()
     {
         $Categories = Category::all();
-        $Halls=Halls::all();
-        return view('Pages.login', compact( 'Categories', 'Halls'));
+        $Halls = Halls::all();
+        return view('Pages.login', compact('Categories', 'Halls'));
     }
-        public function login(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -29,7 +29,7 @@ class loginRegisterController extends Controller
 
         if (count($Admin)) {
             $request->session()->put("loginUser", ["id" => $Admin[0]->id, "role" => "admin"]);
-            return redirect('admin');
+            return redirect('/');
         }
         $Customer = Customer::where('email', "=", request()->email, "And", 'password', "=", request()->password)
             ->get();

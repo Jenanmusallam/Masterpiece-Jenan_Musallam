@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::redirect('/', '/admin');
 
-// Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isLogin', 'customAuth']], function () {
-    Route::redirect('/', '/admin/admin');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isLogin', 'customAuth']], function () {
+    Route::redirect('/', 'admin');
     Route::resource('admin', 'AdminController');
     Route::resource('category', 'CategoryController');
     Route::resource('halls', 'HallsController');
@@ -20,15 +20,15 @@ use Illuminate\Support\Facades\Route;
     Route::resource('Customer', 'CustomerController');
     Route::get('booking', 'BookingController@index');
     Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
-// });
+});
 
 
 // ======================
 
 
-Route::get('login', function () {
-    return view('admin.login');
-});
+// Route::get('login', function () {
+//     return view('admin.login');
+// });
 
 Route::get('side-menu-crud-data-list', function () {
     return view('admin.side-menu-crud-data-list');
@@ -62,9 +62,9 @@ Route::post('HallSingle/{id}', 'ReviewController@store');
 Route::get('/search/', 'ShowPublicController@search')->name('search');
 // ==========================
 // ==========================
-Route::get('my-account', 'ProfileController@index');
+Route::get('userProfile', 'ProfileController@index');
 
-Route::patch('my-account', 'ProfileController@update');
+Route::patch('userProfile', 'ProfileController@update');
 // ==============================
 Route::post('/addToCart', 'cartController@addToCart');
 Route::post('/update', 'cartController@update');
@@ -88,7 +88,7 @@ Route::get('about', 'AboutController@index');
 Route::get('profile', function () {
     return view('Pages.user-profile');
 });
-Route::get('cart','cartController@index');
+Route::get('cart', 'cartController@index');
 Route::get('book', 'BookingController@book');
 
 Route::get('bookNow/{id}', 'BookUserController@index');
@@ -97,10 +97,15 @@ Route::get('bookNow/{id}', 'BookUserController@index');
 Route::get('404', function () {
     return view('Pages.page-404');
 });
-Route::get('loginCustomer', 'loginRegisterController@index');
+Route::get('/login', 'loginRegisterController@index');
 // ======================
 Route::post('/login', 'loginRegisterController@login');
 
 Route::post('/register', 'loginRegisterController@register');
 Route::get('/logout', 'loginRegisterController@logout');
 // ======================
+
+// loginTest
+// Route::get('loginTest', function () {
+//     return view('Pages.loginTest');
+// });

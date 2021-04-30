@@ -3281,6 +3281,20 @@ ul.dropdown-menu > li.has-dropdown > a:before {
     background-color: #222222;
 }
 
+.tab-content>.tab-pane.active {
+    display: block;
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+}
+
+.tab-content>.tab-pane {
+    display: block;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
 /* Custom, iPhone Retina */
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .header-5 .module .module-icon,
@@ -6708,7 +6722,8 @@ ul.dropdown-menu > li.has-dropdown > a:before {
 /*------------------------------------*\
     #my-account
 \*------------------------------------*/
-.form-box {
+.form-box,
+.tab-content .tab-pane {
     background-color: #ffffff;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -6773,6 +6788,8 @@ ul.dropdown-menu > li.has-dropdown > a:before {
     text-align: center;
     position: relative;
     z-index: 1;
+        margin-right: 3rem;
+        margin-left: 2rem;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -6791,7 +6808,9 @@ ul.dropdown-menu > li.has-dropdown > a:before {
     transform: translate(-50%, -50%);
     z-index: -1;
 }
-
+.administrator_contnet span{
+    margin-left: 1rem;
+}
 .output--img {
     width: 100%;
     max-width: 100%;

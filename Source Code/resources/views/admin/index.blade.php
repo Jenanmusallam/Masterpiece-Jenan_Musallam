@@ -17,7 +17,8 @@
       </div>
 
       @if ($message = Session::get('success'))
-      <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-18 text-theme-9" style=" width: 35vw;margin: auto;"> <i data-feather="thumbs-up"></i>
+      <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-18 text-theme-9"
+        style=" width: 35vw;margin: auto;"> <i data-feather="thumbs-up"></i>
         <p>{{ $message }}</p>
       </div>
       @endif
@@ -59,8 +60,8 @@
               <label for="role" class="control-label mb-1">Admin Role</label>
               <select class="input w-full border mt-2 select2" data-hide-search="true" name="role" id="role">
                 <option disabled selected>Select Role</option>
-                <option value='Admin'>Admin</option>
-                <option value='Sub Admin'>Sub Admin</option>
+                <option value='admin'>Admin</option>
+                <option value='sub admin'>Sub Admin</option>
               </select>
               @if ($errors->has('role'))
               <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
