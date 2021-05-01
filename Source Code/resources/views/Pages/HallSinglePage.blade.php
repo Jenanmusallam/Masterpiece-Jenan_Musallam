@@ -249,10 +249,24 @@
                 <div class="property-single-video inner-box"
                     style="height: 15vh; text-align: center; background: -webkit-linear-gradient(left, #ea236f8f, #20acd286);">
                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        @if(!isset(session("loginUser")['id']))
+                        <a href="{{asset('login')}}"
+                            style="border-radius: 2rem;background: white;padding: 1rem 3rem;font-weight: 700;font-size: 22px;">
+                            Book Now
+                        </a>
+                        @else
+                        @if(session("loginUser")['role']=='customer')
                         <a href="{{asset('bookNow/'.$HallSingle->id)}}"
                             style="border-radius: 2rem;background: white;padding: 1rem 3rem;font-weight: 700;font-size: 22px;">
                             Book Now
                         </a>
+                        @else
+                        <a href="{{asset('login')}}"
+                            style="border-radius: 2rem;background: white;padding: 1rem 3rem;font-weight: 700;font-size: 22px;">
+                            Book Now
+                        </a>
+                        @endif
+                        @endif
                     </div>
                     <!-- .row end -->
                 </div>
@@ -274,7 +288,7 @@
                                             src="{{asset("images/{$review->image}")}}">
                                     </div>
                                     <div class="comment">
-                                        <h6>{{ $review->name }}</h6>
+                                        <h6>{{ $review->fullName }}</h6>
                                         <div class="property-rating">
                                             {!! str_repeat('<i class="fa fa-star" aria-hidden="true"></i>',
                                             $review->rate) !!}
@@ -285,23 +299,6 @@
                                     </div>
                                 </li>
                                 @endforeach
-                                <li class="review-comment">
-                                    <div class="avatar"><img width="60px" style="border-radius: 50%;"
-                                            src="{{asset("images/1619635091.jpg")}}">
-                                    </div>
-                                    <div class="comment">
-                                        <h6>Steve Martin</h6>
-                                        <div class="property-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectet adipisicing elit, sed eiusmod tempor
-                                            incididun ut labore dolor magna aliqua enim minim veniam, quis nostrud.</p>
-                                    </div>
-                                </li>
                                 <!-- comment end -->
                             </ul>
                             <!-- .comments-list end -->
@@ -320,7 +317,7 @@
                         </div>
                         @if (isset(session('loginUser')['id']) && session("loginUser")['role']=='customer')
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <form id="post-comment" class="mb-0" action="#" method="POST">
+                            <form id="post-comment" class="mb-0" action="#" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <!-- .col-md-4 end -->
@@ -356,6 +353,7 @@
                                     </div>
                                     <!-- .col-md-12 -->
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        {{-- <input type="hidden" name="hull_id" value="{{$HallSingle->hull_id}}"> --}}
                                         <button type="submit" name="submit" class="btn btn--primary">Submit</button>
                                     </div>
                                 </div>

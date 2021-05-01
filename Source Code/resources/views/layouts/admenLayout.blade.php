@@ -38,14 +38,14 @@
                 </li>
                 <li class="menu__devider my-6"></li>
                 <li>
-                    <a href="{{asset('side-menu-crud-data-list')}}" class="menu">
+                    <a href="{{asset('/admin/booking')}}" class="menu">
                         <div class="menu__icon"> <i data-feather="edit"></i> </div>
                         <div class="menu__title"> Booking <i data-feather="chevron-down" class="menu__sub-icon"></i>
                         </div>
                     </a>
                     <ul class="">
                         <li>
-                            <a href="{{asset('side-menu-crud-data-list')}}" class="menu">
+                            <a href="{{asset('/admin/booking')}}" class="menu">
                                 <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="menu__title"> Data List </div>
                             </a>
@@ -142,60 +142,24 @@
                     <li class="side-nav__devider my-6"></li>
                     <li>
                         <a href="{{asset('/admin/Customer')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
+                            <div class="side-menu__icon"> <i data-feather="users" class="mx-auto"></i> </div>
                             <div class="side-menu__title">Manage Customer </div>
                         </a>
                     </li>
                     <li>
                         <a href="{{asset('/admin/Contact')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
+                            <div class="side-menu__icon"> <i data-feather="link" class="mx-auto"></i> </div>
                             <div class="side-menu__title">View Contact </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('/admin/Reviws')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
-                            <div class="side-menu__title">View Reviws</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{asset('side-menu-crud-data-list')}}" class="side-menu">
+                        <a href="{{asset('/admin/booking')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                             <div class="side-menu__title"> Booking </div>
                         </a>
 
                     </li>
-                    <li class="side-nav__devider my-6"></li>
-                    <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
-                            <div class="side-menu__title"> Components <i data-feather="chevron-down"
-                                    class="side-menu__sub-icon"></i> </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{asset('icon')}}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="side-menu__title"> Icon </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="sidebar"></i> </div>
-                            <div class="side-menu__title"> Forms <i data-feather="chevron-down"
-                                    class="side-menu__sub-icon"></i> </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{asset('side-menu-datepicker')}}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                                    <div class="side-menu__title"> Datepicker </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li class="side-nav__devider my-6"></li>
                     <li>
                         <a href="{{asset('index')}}" class="side-menu">
@@ -204,9 +168,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('login')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
-                            <div class="side-menu__title"> Login</div>
+                        <a href="{{asset('logout')}}" class="side-menu">
+                            <div class="side-menu__icon"><i data-feather="power" class="mx-auto"></i> </div>
+                            <div class="side-menu__title"> Logout</div>
                         </a>
                     </li>
                 </ul>

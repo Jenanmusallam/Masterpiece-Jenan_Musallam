@@ -72,7 +72,7 @@
             <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 
-                <form method="post" enctype="multipart/form-data"
+                <form method="post" action="userProfile" enctype="multipart/form-data"
                     class="single_product_action d-flex align-items-center">
                     @csrf
                     <p class="text-center"

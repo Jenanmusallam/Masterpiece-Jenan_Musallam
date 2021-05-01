@@ -19,17 +19,6 @@ class BookUserController extends Controller
         $Halls = Halls::all();
         $Booking = BookingHall::all();
         $customer = Customer::find($id);
-        //  DB::table('booking_halls')
-        //     ->select(
-        //         'booking_halls.hall_id',
-        //         'hall_singles.price',
-        //         'hall_singles.discount',
-        //         'hall_singles.name',
-        //         'hall_singles.image'
-        //     )
-        //     ->where('booking_halls.hall_id', '=', $id)
-        //     ->join('booking_halls', 'hall_singles.id', 'booking_halls.hall_id')
-        //     ->get();
         return view('Pages.booking', compact('HallSingle', 'Halls', 'Categories', 'Booking', 'customer'));
     }
 
@@ -55,8 +44,6 @@ class BookUserController extends Controller
         $var->statusPayment = $request->input('statusPayment');
         $var->customer_id = $customer_id;
         $var->save();
-        // dd($var)
-
         return back()->with('success', 'successfully.');
         $request->session()->forget('checkout');
         return redirect("/");

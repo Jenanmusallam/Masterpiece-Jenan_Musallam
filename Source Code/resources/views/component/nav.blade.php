@@ -86,19 +86,28 @@
                                 <!-- li end -->
 
                                 <li><a href="{{asset('ContactSite')}}">Contact</a></li>
+                                {{-- <form action="{{ route('search') }}" method="GET">
+                                <div class="category_search_inner">
+                                    <div class="search">
+                                        <input type="text" placeholder="Search..." name="search">
+                                    </div>
+                                    <div class="submit">
+                                        <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                                    </div>
+                                </div>
+                                </form> --}}
                             </ul>
                             <!-- Module Signup  -->
                             <div class="module module-login pull-left">
-                                <ul style="list-style: none;">
-                                    @if(!isset(session("login")['id']))
+                                <ul style="list-style: none; display: flex;">
+                                    @if(!isset(session("loginUser")['id']))
                                     <li><a class="btn-popup" href="{{asset('login')}}"><i class="fa fa-user"></i>
                                             &nbsp;
                                             Login</a></li>
-                                    <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
                                     @else
                                     @if(session("loginUser")['role']=='customer')
                                     <li><a href="{{asset('userProfile')}}" class="btn-popup">My Account</a></li>
-
+                                    <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
                                     @else
                                     <li><a href="{{asset('admin')}}" class="btn-popup">Admin Dashboard</a></li>
 
@@ -106,15 +115,26 @@
                                     @endif
                                     @endif
                                 </ul>
+                                {{-- <ul style="list-style: none;">
+                                    @if(!isset(session("loginUser")['id']))
+                                    <li><a href="{{asset('login')}}" class="btn-popup"> <i
+                                    class="fa fa-user"></i>Login</a></li>
+                                @else
+                                @if(session("loginUser")['role']=='customer')
+                                <li><a href="{{asset('userProfile')}}" class="btn-popup">My Account</a></li>
+                                @else
+                                <li><a href="{{asset('admin')}}">Admin Dashboard</a></li>
+                                <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
+                                @endif
+                                @endif
+                                </ul> --}}
                             </div>
                             <!-- Module Consultation  -->
                             <div class="module module-property pull-left">
                                 @if (!isset(session("loginUser")['id'])||session("loginUser")['role']=='customer')
                                 <div class="mini_cart_box_wrapper text-right">
-                                    <a href="{{asset('bookNow')}}">
-                                        <img src="{{asset('/assets/images/cart.png')}}" alt="Mini Cart Icon"
-                                            style="height: 5vh;margin-top: 2rem;">
-                                    </a>
+                                    <img src="{{asset('/assets/images/cart.png')}}" alt="Mini Cart Icon"
+                                        style="height: 5vh;margin-top: 2rem;">
                                 </div>
                                 @endif
                             </div>

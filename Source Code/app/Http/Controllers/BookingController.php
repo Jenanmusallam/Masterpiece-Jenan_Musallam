@@ -15,25 +15,13 @@ class BookingController extends Controller
     {
         $Categories = Category::all();
         $Halls = Halls::all();
-        $Booking = BookingHall::all();
+        // $Booking = BookingHall::all();
+        $Booking = DB::table('booking_halls')
+            ->select('booking_halls.id', 'booking_halls.date', 'booking_halls.from_time', 'booking_halls.total_price', 'booking_halls.statusPayment', 'customers.fullName', 'customers.phone', 'hall_singles.name')
+            ->join("customers", "booking_halls.customer_id", "customers.id")
+            ->join("hall_singles", "booking_halls.hall_id", "hall_singles.id")
+            ->get();
         return view("admin.booking", compact("Booking", 'Categories', 'Halls'));
-    }
-
-    public function book($id)
-    {
-
-        // $this->validate(request(), [
-        //     'date' => 'required',
-        //     'time' => 'required'
-        // ]);
-        // $id->users()->attach(Auth::id(), ['date' => request()->date, "time" => request()->time]);
-        // // session()->flash('message', 'Booked Successfully');
-        // return redirect()->back()->with('message', 'Booked Successfully');
-        $Categories = Category::all();
-        $Halls = Halls::all();
-        $Booking = BookingHall::all();
-
-        return view("Pages.booking", compact("Booking", 'Categories', 'Halls'));
     }
     public function changeStatus($id, $status)
     {
@@ -48,19 +36,8 @@ class BookingController extends Controller
     {
         $arr = $request->session()->get('loginUser');
         $customer_id = $arr['id'];
-        // $totalPrice = 0;
-        // $totalQty = 0;
-        // $productsPrice = DB::table('products')
-        //     ->select('price', 'discount')
-        //     ->where('id', '=', $item["product"])
-        //     ->get();
-        // $totalPrice += ($productsPrice[0]->price - ($productsPrice[0]->price * $productsPrice[0]->discount / 100)) * $item["qty"];
-        // $totalQty += $item["qty"];
         $booking = new BookingHall;
         $booking->customer_id = $customer_id;
-        // $booking->total_quantity = $totalQty;
-        // $booking->total_price = $totalPrice;
-        // $booking->address = $request->address;
         $booking->save();
         $request->session()->forget('book');
 

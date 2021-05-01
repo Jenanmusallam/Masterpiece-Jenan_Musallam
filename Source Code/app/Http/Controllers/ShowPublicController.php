@@ -88,6 +88,6 @@ class ShowPublicController extends Controller
             ->where('name', 'LIKE', "%{$search}%")
             ->get();
         $Categories = Category::select('id', 'name')->get();
-        return view('Pages.HallSingle', compact('HallSingle', 'Categories'));
+        return view('Pages.HallsPage', compact('HallSingle', 'Categories'));
     }
 }

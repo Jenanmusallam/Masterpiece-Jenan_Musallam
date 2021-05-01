@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\igration;
 use App\Reviews;
 use Illuminate\Http\Request;
+
 class ReviewController extends Controller
 {
     public function index()
@@ -24,8 +26,22 @@ class ReviewController extends Controller
         $review->comment = $request->get('comment');
         $review->rate = $request->get('rate');
         $review->save();
-        return redirect('/hull/' . $hull_id);
+        dd($review);
+        return redirect('/HallSingle/' . $hull_id);
     }
 
 
+    public function edit(igration $igration)
+    {
+        //
+    }
+
+    public function update(Request $request, igration $igration)
+    {
+        //
+    }
+
+    public function destroy(igration $igration)
+    {
+    }
 }
