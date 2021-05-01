@@ -17,37 +17,24 @@ class ProfileController extends Controller
         $Halls = Halls::all();
         $id = session('loginUser')['id'];
         $customer = Customer::where('id', '=', $id)->get();
-        //=======================
+        // $booking = BookingHall::where("customer_id", $id)->get();
         $booking = DB::table('booking_halls')
-            ->join('customers', 'booking_halls.customer_id', 'customers.id')
-            ->join('hall_singles', 'booking_halls.hall_id', 'hall_singles.id')
-            ->orderBy('booking_halls.id')
+            ->select(
+                'booking_halls.id',
+                'booking_halls.statusPayment',
+                'booking_halls.date',
+                'booking_halls.from_time',
+                'booking_halls.duration',
+                'booking_halls.additional_info',
+                'booking_halls.total_price',
+                'hall_singles.id as hallId',
+                'hall_singles.name',
+                'hall_singles.image'
+            )
+            ->join("hall_singles", "booking_halls.hall_id", "hall_singles.id")
+            ->where("customer_id", $id)
             ->get();
-        $booking_array = [];
-
-        $last_element = $booking->last();
-        if ($last_element) {
-            $collection = collect($booking);
-            // for ($i = 1; $i <= $last_element->order_id; $i++) {
-            //     $temp = [];
-            //     $GLOBALS['i'] = $i;
-            //     $temp = $collection->filter(function ($value, $key) {
-            //         return $value->order_id ==
-            //             $GLOBALS['i'];
-            //     });
-            //     $booking_array[] = $temp;
-            // }
-        }
-        //========================
-        $booking = BookingHall::where("customer_id", $id)->get();
-
-        $bookingTable = [];
-        foreach ($booking as $book) {
-            $bookingTable[] = [
-                "book" => $book,
-            ];
-        }
-        return view('Pages.userProfile', compact('Categories', 'Halls', 'customer', 'bookingTable'));
+        return view('Pages.userProfile', compact('Categories', 'Halls', 'customer', 'booking'));
     }
 
     public function update(Request $request)

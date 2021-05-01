@@ -110,59 +110,49 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="orders" style="position: relative;top: -16rem;">
+                    <div class="tab-pane fade " id="orders" style="position: relative;top: -50rem;">
                         <h3>Booking</h3>
+
                         <div class="lion_table_area table-responsive">
+                            <!-- .property-item #1 -->
+                            @foreach ($booking as $book)
+                            <div class="property-item">
+                                <div class="property--img">
+                                    <a href="{{asset('HallSingle/'.$book->hallId)}}">
+                                        <img src="{{asset("images/".$book->image)}}" alt="property image"
+                                            class="img-responsive">
+                                        <span class="property--status">For Sale</span>
+                                    </a>
+                                </div>
+                                <div class="property--content">
+                                    <div class="property--info">
+                                        <h5 class="property--title"><a
+                                                href="{{asset('HallSingle/'.$book->hallId)}}">{{ $book->name}}</a></h5>
+                                        <p class="property--location">Status Payment: {{ $book->statusPayment}}</p>
+                                        <p class="property--price">Total Price: {{ $book->total_price}}
+                                            JOD</p>
+                                    </div>
+                                    <!-- .property-info end -->
+                                    <div class="property--features">
+                                        <ul>
+                                            <li><span class="feature">Date:</span><span
+                                                    class="feature-num">{{$book->date}}</span>
+                                            </li>
+                                            <li><span class="feature">Time:</span><span
+                                                    class="feature-num">{{$book->from_time}}</span>
+                                            </li>
+                                            <li><span class="feature">Duration:</span><span
+                                                    class="feature-num">{{$book->duration}}</span></li>
+                                            <li><span class="feature">Additional Information:</span><span
+                                                    class="feature-num">{{$book->additional_info}}</span></li>
+                                        </ul>
 
-                            @foreach ($bookingTable as $book)
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Hall Name</th>
-                                        <th>Image</th>
-                                        <th>Price </th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach ($book["book"] as $key=> $book)
-                                    <tr>
-                                        <td>{{ $book->name }}</td>
-                                        <td> <img height='100' src="{{asset('images/'.$book->image)}}" alt="">
-                                        </td>
-                                        <td>
-                                            @if ($book->quantity!=1)
-                                            {{$book->quantity }} items
-                                            @else
-                                            {{$book->quantity }} item
-                                            @endif
-                                        </td>
-
-                                    </tr>
-                                    @endforeach
-
-                                    <tr>
-                                        <td colspan="3" class="subtableCon">
-                                            <table class="subtable">
-                                                <tr>
-                                                    <th>Summary</th>
-                                                    <td>book id :{{ $book["book"]->id }}</td>
-                                                    <td>Date:{{ Str::substr($book["book"]->created_at,0, 16)  }}
-                                                    </td>
-                                                    <td>Status: {{ $book["book"]->status  }}</td>
-                                                    <td>Total Price: {{ $book["book"]->total_price  }}
-                                                        JOD</td>
-
-                                                </tr>
-                                            </table>
-
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
+                                    </div>
+                                    <!-- .property-features end -->
+                                </div>
+                            </div>
                             @endforeach
+                            <!-- .property item end -->
                             <div class="card mb-3" style="max-width: 540px;">
 
                             </div>

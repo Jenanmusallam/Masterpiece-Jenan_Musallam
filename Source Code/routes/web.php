@@ -9,18 +9,19 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::redirect('/', '/admin');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isLogin', 'customAuth'
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => [
+    'isLogin', 'customAuth'
 ]], function () {
-Route::redirect('/', '/admin/admin');
-Route::resource('admin', 'AdminController');
-Route::resource('category', 'CategoryController');
-Route::resource('halls', 'HallsController');
-Route::resource('Contact', 'ContactController');
-Route::resource('image', 'ImagesController');
-Route::resource('hall', 'HallController');
-Route::resource('Customer', 'CustomerController');
-Route::get('booking', 'BookingController@index');
-Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
+    Route::redirect('/', '/admin/admin');
+    Route::resource('admin', 'AdminController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('halls', 'HallsController');
+    Route::resource('Contact', 'ContactController');
+    Route::resource('image', 'ImagesController');
+    Route::resource('hall', 'HallController');
+    Route::resource('Customer', 'CustomerController');
+    Route::get('booking', 'BookingController@index');
+    Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
 });
 
 
@@ -65,14 +66,6 @@ Route::get('/search/', 'ShowPublicController@search')->name('search');
 // ==========================
 Route::get('userProfile', 'ProfileController@index');
 Route::patch('userProfile', 'ProfileController@update');
-// ==============================
-
-Route::get('cart', 'cartController@index');
-Route::get('cart/delete/{id}', 'cartController@delete');
-Route::get('checkout', 'cartController@Checkout');
-Route::post('checkout', 'OrdersController@store');
-
-
 
 
 //============= public Side================ 
