@@ -73,7 +73,7 @@ class CustomerController extends Controller
         $Customer->phone = $request->get('phone');
         $Customer->image = $imageName;
         $Customer->save();
-        return redirect('Customer')->with('success', 'Customer updated!');
+        return redirect('/admin/Customer')->with('success', 'Customer updated!');
     }
 
     public function destroy($id)

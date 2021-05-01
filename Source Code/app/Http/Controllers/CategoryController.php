@@ -63,7 +63,7 @@ class CategoryController extends Controller
         $category->name = $request->get('name');
         $category->image = $imageName;
         $category->save();
-        return redirect('category')->with('success', 'Category updated!');
+        return redirect('admin/category')->with('success', 'Category updated!');
     }
 
     public function destroy($id)

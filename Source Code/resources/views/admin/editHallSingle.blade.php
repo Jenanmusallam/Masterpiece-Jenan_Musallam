@@ -14,7 +14,7 @@
           Edit Hall
         </h2>
       </div>
-      <form action="{{ route('hall.update', $hall->id) }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('admin.hall.update', $hall->id) }}" method="post" enctype="multipart/form-data">
         @method('PATCH') {{ csrf_field() }}
         <div class="p-5" id="vertical-form">
           <div class="preview">

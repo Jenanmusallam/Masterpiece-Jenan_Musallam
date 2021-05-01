@@ -105,12 +105,12 @@
                         <td>{{$Customer->fullName}}</td>
                         <td>{{$Customer->phone}}</td>
                         <td>
-                            <a href="{{ route('Customer.edit', $Customer->id)}}"
+                            <a href="{{ route('admin.Customer.edit', $Customer->id)}}"
                                 class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
                                     data-feather="edit" class="w-4 h-4 mr-1"></i>Edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('Customer.destroy', $Customer->id)}}" method="post">
+                            <form action="{{ route('admin.Customer.destroy', $Customer->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

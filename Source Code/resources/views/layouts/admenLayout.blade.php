@@ -22,7 +22,7 @@
         <!-- BEGIN: Mobile Menu -->
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
-                <a href="{{asset('admin')}}" class="flex mr-auto">
+                <a href="{{asset('/admin')}}" class="flex mr-auto">
                     <img alt="Farhaty Tailwind HTML Admin Template" class="w-6"
                         src="{{asset('adminAssets/dist/images/logo.png')}}">
                 </a>
@@ -31,7 +31,7 @@
             </div>
             <ul class="border-t border-theme-24 py-5 hidden">
                 <li>
-                    <a href="{{asset('admin')}}" class="menu menu--active">
+                    <a href="{{asset('/admin')}}" class="menu menu--active">
                         <div class="menu__icon"> <i data-feather="home"></i> </div>
                         <div class="menu__title"> Admin </div>
                     </a>
@@ -101,7 +101,7 @@
         <div class="flex">
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
-                <a href="{{asset('admin')}}" class="intro-x flex items-center pl-5 pt-4"
+                <a href="{{asset('/admin')}}" class="intro-x flex items-center pl-5 pt-4"
                     style="background: RGB(46, 54, 73,0.5);">
                     <img alt="Farhaty Tailwind html Admin Template" class="w-40"
                         src="{{asset('adminAssets/dist/images/logo.png')}}">
@@ -109,51 +109,51 @@
                 <div class="side-nav__devider my-6"></div>
                 <ul>
                     <li>
-                        <a href="{{asset('admin')}}" class="side-menu">
+                        <a href="{{asset('/admin')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                             <div class="side-menu__title"> Admin </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('category')}}" class="side-menu">
+                        <a href="{{asset('/admin/category')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="database" class="mx-auto"></i> </div>
                             <div class="side-menu__title"> Category </div>
                         </a>
                     </li>
                     </li>
                     <li>
-                        <a href="{{asset('halls')}}" class="side-menu">
+                        <a href="{{asset('/admin/halls')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="layout"></i> </div>
                             <div class="side-menu__title">Manage Halls </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('hall')}}" class="side-menu">
+                        <a href="{{asset('/admin/hall')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                             <div class="side-menu__title">Manage Hall Single </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('image')}}" class="side-menu">
+                        <a href="{{asset('/admin/image')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                             <div class="side-menu__title">Manage Images Halls </div>
                         </a>
                     </li>
                     <li class="side-nav__devider my-6"></li>
                     <li>
-                        <a href="{{asset('Customer')}}" class="side-menu">
+                        <a href="{{asset('/admin/Customer')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                             <div class="side-menu__title">Manage Customer </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('Contact')}}" class="side-menu">
+                        <a href="{{asset('/admin/Contact')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                             <div class="side-menu__title">View Contact </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{asset('Reviws')}}" class="side-menu">
+                        <a href="{{asset('/admin/Reviws')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                             <div class="side-menu__title">View Reviws</div>
                         </a>

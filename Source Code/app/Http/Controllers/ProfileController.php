@@ -28,15 +28,15 @@ class ProfileController extends Controller
         $last_element = $booking->last();
         if ($last_element) {
             $collection = collect($booking);
-            for ($i = 1; $i <= $last_element->order_id; $i++) {
-                $temp = [];
-                $GLOBALS['i'] = $i;
-                $temp = $collection->filter(function ($value, $key) {
-                    return $value->order_id ==
-                        $GLOBALS['i'];
-                });
-                $booking_array[] = $temp;
-            }
+            // for ($i = 1; $i <= $last_element->order_id; $i++) {
+            //     $temp = [];
+            //     $GLOBALS['i'] = $i;
+            //     $temp = $collection->filter(function ($value, $key) {
+            //         return $value->order_id ==
+            //             $GLOBALS['i'];
+            //     });
+            //     $booking_array[] = $temp;
+            // }
         }
         //========================
         $booking = BookingHall::where("customer_id", $id)->get();

@@ -130,12 +130,12 @@
             <td>{{$admin->role}}</td>
             <td>{{$admin->halls_name}}</td>
             <td>
-              <a href="{{ route('admin.edit', $admin->id)}}"
+              <a href="{{ route('admin.admin.edit', $admin->id)}}"
                 class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i data-feather="edit"
                   class="w-4 h-4 mr-1"></i>Edit</a>
             </td>
             <td>
-              <form action="{{ route('admin.destroy', $admin->id)}}" method="post">
+              <form action="{{ route('admin.admin.destroy', $admin->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="button mr-2 mb-2 flex items-center justify-center bg-theme-6 text-white"><i

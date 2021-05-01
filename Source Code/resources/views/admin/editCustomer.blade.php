@@ -14,7 +14,7 @@
           Edit Customer
         </h2>
       </div>
-      <form action="{{ route('Customer.update', $Customer->id) }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('admin.Customer.update', $Customer->id) }}" method="post" enctype="multipart/form-data">
         @method('PATCH')
         {{ csrf_field() }}
         <div class="p-5" id="vertical-form">

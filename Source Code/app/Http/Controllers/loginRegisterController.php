@@ -29,8 +29,9 @@ class loginRegisterController extends Controller
 
         if (count($Admin)) {
             $request->session()->put("loginUser", ["id" => $Admin[0]->id, "role" => "admin"]);
-            return redirect('/');
+           return redirect('/');
         }
+       
         $Customer = Customer::where('email', "=", request()->email, "And", 'password', "=", request()->password)
             ->get();
         if (count($Customer)) {

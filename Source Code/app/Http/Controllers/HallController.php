@@ -99,7 +99,7 @@ class HallController extends Controller
         $halls->halls_id = $request->get('halls_id');
         $halls->image = $imageName;
         $halls->save();
-        return redirect('hall')->with('success', 'Hall updated!');
+        return redirect('admin/hall')->with('success', 'Hall updated!');
     }
 
     public function destroy($id)

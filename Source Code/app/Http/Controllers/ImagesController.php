@@ -72,7 +72,7 @@ class ImagesController extends Controller
         $images->hall_id = $request->get('hall');
         $images->img = $imageName;
         $images->save();
-        return redirect('images')->with('success', 'Image updated!');
+        return redirect('admin/images')->with('success', 'Image updated!');
     }
 
     public function destroy($id)

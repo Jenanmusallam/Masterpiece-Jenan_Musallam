@@ -80,13 +80,13 @@
                   <td>
                     {{-- <a href="{{ route('admin.category.edit', $category->id)}}" class="btn btn-warning">Edit</a>
                     --}}
-                    <a href="{{ route('category.edit', $category->id)}}"
+                    <a href="{{ route('admin.category.edit', $category->id)}}"
                       class="button w-32 mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
                         data-feather="edit" class="w-4 h-4 mr-2"></i> Edit </a>
 
                   </td>
                   <td>
-                    <form action="{{ route('category.destroy', $category->id)}}" method="post">
+                    <form action="{{ route('admin.category.destroy', $category->id)}}" method="post">
                       @csrf
                       @method('DELETE')
                       <button type="submit"

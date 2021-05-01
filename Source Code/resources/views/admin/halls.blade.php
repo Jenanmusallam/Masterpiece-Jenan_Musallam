@@ -126,12 +126,12 @@
                   <td>{{$halls->location }}</td>
                   <td>{{$halls->category_name}}</td>
                   <td>
-                    <a href="{{ route('halls.edit', $halls->id)}}"
+                    <a href="{{ route('admin.halls.edit', $halls->id)}}"
                       class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
                         data-feather="edit" class="w-4 h-4 mr-1"></i>Edit</a>
                   </td>
                   <td>
-                    <form action="{{ route('halls.destroy', $halls->id)}}" method="post">
+                    <form action="{{ route('admin.halls.destroy', $halls->id)}}" method="post">
                       @csrf
                       @method('DELETE')
                       <button type="submit"

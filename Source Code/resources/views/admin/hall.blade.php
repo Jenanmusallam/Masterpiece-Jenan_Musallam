@@ -159,12 +159,12 @@
                   <td>{{$halls->video }}</td>
                   <td>{{$halls->halls_name}}</td>
                   <td>
-                    <a href="{{ route('hall.edit', $halls->id)}}"
+                    <a href="{{ route('admin.hall.edit', $halls->id)}}"
                       class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
                         data-feather="edit" class="w-4 h-4 mr-1"></i>Edit</a>
                   </td>
                   <td>
-                    <form action="{{ route('hall.destroy', $halls->id)}}" method="post">
+                    <form action="{{ route('admin.hall.destroy', $halls->id)}}" method="post">
                       @csrf
                       @method('DELETE')
                       <button type="submit"

@@ -6,16 +6,17 @@ use App\Admin;
 use App\Halls;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class AdminController extends Controller
 {
-      public function index()
+    public function index()
     {
-          $admins = DB::table('admins')
+        $admins = DB::table('admins')
             ->select('admins.id', 'admins.fullName', 'admins.role', 'admins.email', 'admins.password', 'admins.image', 'halls.name AS halls_name')
             ->join("halls", "admins.halls_id", "halls.id")
             ->get();
-          $halls = Halls::all();
-        return view('admin.index', compact('admins','halls'));
+        $halls = Halls::all();
+        return view('admin.index', compact('admins', 'halls'));
     }
 
     public function store(Request $request)
@@ -25,8 +26,8 @@ class AdminController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'role'=>'required',
-            'halls'=>'required',
+            'role' => 'required',
+            'halls' => 'required',
         ]);
 
         if (!empty(request()->image)) {
@@ -41,7 +42,7 @@ class AdminController extends Controller
         $var->email = $request->input('email');
         $var->password = $request->input('password');
         $var->role = $request->input('role');
-        $var->halls_id=$request->input('halls');
+        $var->halls_id = $request->input('halls');
         $var->image = $imageName;
 
         $var->save();
@@ -52,7 +53,7 @@ class AdminController extends Controller
     {
         $admin = Admin::find($id);
         $halls = Halls::all();
-        return view('admin.editAdmin', compact('admin','halls'));
+        return view('admin.editAdmin', compact('admin', 'halls'));
     }
 
     public function update(Request $request, $id)
@@ -61,7 +62,7 @@ class AdminController extends Controller
             'fullName' => 'required|min:4',
             'email' => 'required|email',
             'password' => 'required|min:6',
-            'role'=>'required',
+            'role' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if (!empty(request()->image)) {
@@ -76,12 +77,12 @@ class AdminController extends Controller
         $admin->fullName = $request->get('fullName');
         $admin->email = $request->get('email');
         $admin->password = $request->get('password');
-        $admin->halls_id=$request->input('halls');
-        $admin->role=$request->input('role');
+        $admin->halls_id = $request->input('halls');
+        $admin->role = $request->input('role');
         $admin->image = $imageName;
         $admin->save();
 
-        return redirect('/admin')->with('success', 'Contact updated!');
+        return redirect('/')->with('success', 'Contact updated!');
     }
 
     public function destroy($id)

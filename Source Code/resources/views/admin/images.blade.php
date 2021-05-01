@@ -93,12 +93,12 @@
                   </td>
                   <td>{{$images->hall_id}}</td>
                   <td>
-                    <a href="{{ route('images.edit', $images->id)}}"
+                    <a href="{{ route('admin.images.edit', $images->id)}}"
                       class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
                         data-feather="edit" class="w-4 h-4 mr-1"></i>Edit</a>
                   </td>
                   <td>
-                    <form action="{{ route('images.destroy', $images->id)}}" method="post">
+                    <form action="{{ route('admin.images.destroy', $images->id)}}" method="post">
                       @csrf
                       @method('DELETE')
                       <button type="submit"

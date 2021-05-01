@@ -84,7 +84,7 @@ class HallsController extends Controller
         $halls->category_id = $request->get('category');
         $halls->image = $imageName;
         $halls->save();
-        return redirect('halls')->with('success', 'Halls updated!');
+        return redirect('admin/halls')->with('success', 'Halls updated!');
     }
 
     public function destroy($id)

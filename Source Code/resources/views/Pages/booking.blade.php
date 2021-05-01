@@ -84,17 +84,17 @@
                         <label style="font-weight: 700;margin-right: 1rem;">Date and Time :</label>
                         <input type="date" name="date" id="date" required value="<?php echo date('Y-m-d'); ?>"
                             min="<?php echo date('Y-m-d'); ?>" class="btn btn--date--select" required />
-                       @if ($errors->has('date'))
+                        @if ($errors->has('date'))
                         <div class="alert alert-danger">
                             {{ $errors->first('date') }}
                         </div>
                         @endif
-                            <select name="from_time" class="btn btn--date--select" required style="padding-left: 6rem;">
-                            <option value="02:00:00">02:00 PM</option>
-                            <option value="04:00:00">04:00 PM</option>
-                            <option value="06:00:00">06:00 PM</option>
-                            <option value="08:00:00">08:00 PM</option>
-                            <option value="10:00:00">10:00 PM</option>
+                        <select name="from_time" class="btn btn--date--select" required style="padding-left: 6rem;">
+                            <option value="02:00">02:00 PM</option>
+                            <option value="04:00">04:00 PM</option>
+                            <option value="06:00">06:00 PM</option>
+                            <option value="08:00">08:00 PM</option>
+                            <option value="10:00">10:00 PM</option>
                         </select>
                         @if ($errors->has('from_time'))
                         <div class="alert alert-danger">
@@ -117,6 +117,10 @@
                             {{ $errors->first('additional_info') }}
                         </div>
                         @endif
+                        <input type="radio" name="statusPayment" value="Cash">
+                        <label for="Cash">Cash</label>
+                        <input type="radio" name="statusPayment" value="Credit Card">
+                        <label for="Credit Card">Credit Card</label>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <section id="user-profile" class="user-profile" style="padding-top: 0;padding-bottom: 0;">
@@ -136,7 +140,7 @@
                                                         <label for="Cash">Credit Card</label></a>
                                                 </li>
                                             </ul>
-                                          
+
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-8">
@@ -161,7 +165,7 @@
                                                 <div class="login">
                                                     <div class="login_form_container">
                                                         <div class="form-box">
-                                                            {{-- <form>
+                                                            <form>
                                                                 @csrf
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-3">
@@ -172,47 +176,50 @@
                                                                         @if ($errors->has(''))
                                                                         <div class="alert alert-danger">
                                                                             {{ $errors->first('') }}
+                                                                        </div>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label>Security Code</label>
+                                                                        <input type="password" class="form-control"
+                                                                            placeholder="5894" name="" maxLength="4"
+                                                                            required />
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label for="inputState">Expiration Data</label>
+                                                                        <input type="date" name="dateExpiration"
+                                                                            required class="form-control"
+                                                                            value="<?php echo date('Y-m-d'); ?>">
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <button class="btn btn--primary" name="submit"
+                                                                            type="submit">
+                                                                            Submit
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label>Security Code</label>
-                                                        <input type="password" class="form-control" placeholder="5894"
-                                                            name="" maxLength="4" required />
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputState">Expiration Data</label>
-                                                        <input type="date" name="dateExpiration" required
-                                                            class="form-control" value="<?php echo date('Y-m-d'); ?>">
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <button class="btn btn--primary" name="submit" type="submit">
-                                                            Submit
-                                                        </button>
                                                     </div>
                                                 </div>
-                </form> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="add_to_cart_btn">
+                        <input type="hidden" name="hall_id" value="{{$HallSingle->id}}">
+                        <input type="hidden" name="total_price" value="{{$HallSingle->price}}">
+                        <button class="btn btn--primary" name="submit" type="submit" style="width: 25vw;">Book
+                            Now</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-</section>
-</div>
-<div class="add_to_cart_btn">
-    <input type="hidden" name="hall_id" value="{{$HallSingle->id}}">
-    <input type="hidden" name="total_price" value="{{$HallSingle->price}}">
-    <button class="btn btn--primary" name="submit" type="submit" style="width: 25vw;">Book
-        Now</button>
-</div>
-</form>
-
-</div>
-</div>
-</div>
 </section>
 
 <!-- cta #1
