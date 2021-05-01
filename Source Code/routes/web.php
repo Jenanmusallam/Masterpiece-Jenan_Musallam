@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::redirect('/', '/admin');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isLogin', 'customAuth']], function () {
-    Route::redirect('/', 'admin');
-    Route::resource('admin', 'AdminController');
-    Route::resource('category', 'CategoryController');
-    Route::resource('halls', 'HallsController');
-    Route::resource('Contact', 'ContactController');
-    Route::resource('image', 'ImagesController');
-    Route::resource('hall', 'HallController');
-    Route::resource('Customer', 'CustomerController');
-    Route::get('booking', 'BookingController@index');
-    Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
-});
+// Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['isLogin', 'customAuth']], function () {
+Route::redirect('/', 'admin');
+Route::resource('admin', 'AdminController');
+Route::resource('category', 'CategoryController');
+Route::resource('halls', 'HallsController');
+Route::resource('Contact', 'ContactController');
+Route::resource('image', 'ImagesController');
+Route::resource('hall', 'HallController');
+Route::resource('Customer', 'CustomerController');
+Route::get('booking', 'BookingController@index');
+Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
+// });
 
 
 // ======================
@@ -63,7 +63,6 @@ Route::get('/search/', 'ShowPublicController@search')->name('search');
 // ==========================
 // ==========================
 Route::get('userProfile', 'ProfileController@index');
-
 Route::patch('userProfile', 'ProfileController@update');
 // ==============================
 Route::post('/addToCart', 'cartController@addToCart');
@@ -92,6 +91,7 @@ Route::get('cart', 'cartController@index');
 Route::get('book', 'BookingController@book');
 
 Route::get('bookNow/{id}', 'BookUserController@index');
+Route::post('bookNow/{id}', 'BookUserController@store');
 // Route::get('HallSingle','HallController@create');
 
 Route::get('404', function () {

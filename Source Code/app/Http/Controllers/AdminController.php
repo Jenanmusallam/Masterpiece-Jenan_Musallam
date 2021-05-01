@@ -61,7 +61,6 @@ class AdminController extends Controller
             'fullName' => 'required|min:4',
             'email' => 'required|email',
             'password' => 'required|min:6',
-            'halls'=>'required',
             'role'=>'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

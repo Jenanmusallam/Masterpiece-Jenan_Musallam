@@ -1,5 +1,6 @@
 @include('component/nav')
-<section id="page-title" class="page-title bg-overlay bg-overlay-dark2" style="height: 17vh;">
+
+<section id="page-title" class="page-title bg-overlay bg-overlay-dark2" style="height: 19vh;">
     <div class="bg-section">
         <img src="assets/images/login.png" alt="Background" />
     </div>
@@ -56,10 +57,17 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>password <span>*</span></label>
+                    <label>Password <span>*</span></label>
                     <input type="password" class="form-control" name="password" placeholder="Password">
                     @if ($errors->has('password'))
                     <div class="alert alert-danger">{{ $errors->first('password') }}</div>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label>Phone <span>*</span></label>
+                    <input type="tel" class="form-control" name="phone" placeholder="Enter Phone">
+                    @if ($errors->has('phone'))
+                    <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
                     @endif
                 </div>
                 <input type="submit" class="btn btn--primary btn--block" value="Register">

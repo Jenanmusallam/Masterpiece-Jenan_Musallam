@@ -97,7 +97,6 @@
                      </div>
                      <div class="feature--content">
                          <h3>Presenting Your Property</h3>
-                         <p>Duis sed odio sit amet nibh vtate cursusa sit amet mauris morbi accum ipsum velit nam nec tellus viele a odio tincidet auctor ornare odio. Sede non mauris vitae erat conquat.</p>
                      </div>
                  </div>
                  <!-- .feature-panel end -->
@@ -111,7 +110,6 @@
                      </div>
                      <div class="feature--content">
                          <h3> Renting Halls </h3>
-                         <p>Duis sed odio sit amet nibh vtate cursusa sit amet mauris morbi accum ipsum velit nam nec tellus viele a odio tincidet auctor ornare odio. Sede non mauris vitae erat conquat.</p>
                      </div>
                  </div>
                  <!-- .feature-panel end -->
@@ -125,7 +123,6 @@
                      </div>
                      <div class="feature--content">
                          <h3>Book Anytime and Anywhere</h3>
-                         <p>Duis sed odio sit amet nibh vtate cursusa sit amet mauris morbi accum ipsum velit nam nec tellus viele a odio tincidet auctor ornare odio. Sede non mauris vitae erat conquat.</p>
                      </div>
                  </div>
                  <!-- .feature-panel end -->
@@ -139,7 +136,6 @@
                      </div>
                      <div class="feature--content">
                          <h3>Facilitate payment process</h3>
-                         <p>Duis sed odio sit amet nibh vtate cursusa sit amet mauris morbi accum ipsum velit nam nec tellus viele a odio tincidet auctor ornare odio. Sede non mauris vitae erat conquat.</p>
                      </div>
                  </div>
                  <!-- .feature-panel end -->

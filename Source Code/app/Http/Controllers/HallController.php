@@ -106,7 +106,6 @@ class HallController extends Controller
     {
         $Halls = HallSingle::find($id);
         $Halls->delete();
-
         return back()->with('success', 'Hall deleted!');
     }
 }

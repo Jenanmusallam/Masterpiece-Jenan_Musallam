@@ -13,4 +13,5 @@ class cartController extends Controller
         $Halls=Halls::all();
         return view('Pages.cart', compact( 'Categories', 'Halls'));
     }
+    
 }

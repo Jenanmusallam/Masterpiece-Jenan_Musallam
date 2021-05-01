@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
-     public function index()
+    public function index()
     {
         $Categories = Category::all();
-        $Halls=Halls::all();
+        $Halls = Halls::all();
         $Booking = BookingHall::all();
-        return view("admin.booking", compact("Booking",'Categories','Halls'));
+        return view("admin.booking", compact("Booking", 'Categories', 'Halls'));
     }
 
-      public function book($id)
+    public function book($id)
     {
 
         // $this->validate(request(), [
@@ -30,14 +30,13 @@ class BookingController extends Controller
         // // session()->flash('message', 'Booked Successfully');
         // return redirect()->back()->with('message', 'Booked Successfully');
         $Categories = Category::all();
-        $Halls=Halls::all();
+        $Halls = Halls::all();
         $Booking = BookingHall::all();
 
-        return view("Pages.booking", compact("Booking",'Categories','Halls'));
+        return view("Pages.booking", compact("Booking", 'Categories', 'Halls'));
     }
     public function changeStatus($id, $status)
     {
-        // dd($id, $status);
         $booking = BookingHall::find($id);
         $booking->statusPayment = $status;
         $booking->save();
@@ -49,40 +48,21 @@ class BookingController extends Controller
     {
         $arr = $request->session()->get('loginUser');
         $customer_id = $arr['id'];
-
-        // dd($request->phoneRequired);
-        if ($request->phoneRequired) {
-            request()->validate([
-                'phone' => 'required',
-            ]);
-            $Customer = Customer::find($customer_id);
-            $Customer->phone = $request->get('phone');
-            $Customer->save();
-        }
-        // receive cart data
-        $cart = $request->session()->get('cart');
-
-        // calculate the total price & total quantity
-
-        $totalPrice = 0;
-        $totalQty = 0;
-        foreach ($cart as $item) {
-            $productsPrice = DB::table('products')
-                ->select('price', 'discount')
-                ->where('id', '=', $item["product"])
-                ->get();
-
-            $totalPrice += ($productsPrice[0]->price - ($productsPrice[0]->price * $productsPrice[0]->discount / 100)) * $item["qty"];
-            $totalQty += $item["qty"];
-        }
-
+        // $totalPrice = 0;
+        // $totalQty = 0;
+        // $productsPrice = DB::table('products')
+        //     ->select('price', 'discount')
+        //     ->where('id', '=', $item["product"])
+        //     ->get();
+        // $totalPrice += ($productsPrice[0]->price - ($productsPrice[0]->price * $productsPrice[0]->discount / 100)) * $item["qty"];
+        // $totalQty += $item["qty"];
         $booking = new BookingHall;
         $booking->customer_id = $customer_id;
-        $booking->total_quantity = $totalQty;
-        $booking->total_price = $totalPrice;
-        $booking->address = $request->address;
+        // $booking->total_quantity = $totalQty;
+        // $booking->total_price = $totalPrice;
+        // $booking->address = $request->address;
         $booking->save();
-        $request->session()->forget('cart');
+        $request->session()->forget('book');
 
         return redirect("/");
     }

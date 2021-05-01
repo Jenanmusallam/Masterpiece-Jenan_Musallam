@@ -42,9 +42,9 @@
                     <ul role="tablist" class="edit--profile-links list-unstyled mb-0">
                         <li><a href="#Profile" data-toggle="tab" class="nav-link active">Profile</a>
                         </li>
-                        <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
                         <li><a href="#account-details" data-toggle="tab" class="nav-link">Edit
                                 Profile</a></li>
+                        <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
                         <li><a href="logout" class="nav-link">logout</a></li>
                     </ul>
                 </div>
@@ -66,7 +66,51 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="orders">
+                    <div class="tab-pane fade" id="account-details"
+                        style="position: relative;top: -8rem; height: 79vh;">
+                        <h3>Edit Profile </h3>
+                        <div class="login">
+                            <div class="login_form_container">
+                                <div class="form-box">
+                                    <form method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
+                                        <div class="form-group">
+                                            <label for="first-name">Full Name</label>
+                                            <input type="text" class="form-control" name="fullName"
+                                                value="{{ $customer[0]->fullName }}">
+                                            @if ($errors->has('fullName'))
+                                            <div class="alert alert-danger">{{ $errors->first('fullName') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" name="email"
+                                                value="{{ $customer[0]->email }}">
+                                            @if ($errors->has('email'))
+                                            <div class="alert alert-danger">{{ $errors->first('email') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input type="file" name="image" class="form-control">
+                                        </div>
+                                        <div class="form-group"> <label>Phone</label>
+                                            <input type="text" name="phone" class="form-control"
+                                                value="{{ $customer[0]->phone}}">
+                                            @if ($errors->has('phone'))
+                                            <div class="alert alert-danger">{{ $errors->first('phone') }}
+                                            </div>
+                                            @endif</div>
+                                        <button class="btn btn--primary" name="submit" type="submit">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="orders" style="position: relative;top: -16rem;">
                         <h3>Booking</h3>
                         <div class="lion_table_area table-responsive">
 
@@ -124,90 +168,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="account-details">
-                        <h3>Edit Profile </h3>
-                        <div class="login">
-                            <div class="login_form_container">
-                                <div class="form-box">
-                                    <form method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PATCH')
-                                        <label>Name</label>
-                                        <input type="text" name="fullName" value="{{ $customer[0]->fullName }}">
-                                        @if ($errors->has('fullName'))
-                                        <div class="alert alert-danger">{{ $errors->first('fullName') }}
-                                        </div>
-                                        @endif
-                                        <label>Email</label>
-                                        <input type="email" name="email" value="{{ $customer[0]->email }}">
-                                        @if ($errors->has('email'))
-                                        <div class="alert alert-danger">{{ $errors->first('email') }}
-                                        </div>
-                                        @endif
-                                        <label>Image</label>
-                                        <input type="file" name="image">
-                                        <label>Phone</label>
-                                        <input type="text" name="phone" value="{{ $customer[0]->phone}}">
-                                        @if ($errors->has('phone'))
-                                        <div class="alert alert-danger">{{ $errors->first('phone') }}
-                                        </div>
-                                        @endif
-                                        <button class="btn btn-danger rounded" name="submit" type="submit">Save</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-8">
-            <form class="mb-0">
-                <div class="form-box">
-                    <h4 class="form--title">Personal Details</h4>
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" class="form-control" name="first-name" id="first-name">
-                    </div>
-                    <!-- .form-group end -->
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" class="form-control" name="last-name" id="last-name">
-                    </div>
-                    <!-- .form-group end -->
-                    <div class="form-group">
-                        <label for="email-address">Email Address</label>
-                        <input type="email" class="form-control" name="email-address" id="email-address">
-                    </div>
-                    <!-- .form-group end -->
-                    <div class="form-group">
-                        <label for="phone-number">Phone</label>
-                        <input type="text" class="form-control" name="phone-number" id="phone-number">
-                    </div>
-                    <!-- .form-group end -->
-                    <div class="form-group">
-                        <label for="about-me">About Me</label>
-                        <textarea class="form-control" name="about-me" id="about-me" rows="2"></textarea>
-                    </div>
-                    <!-- .form-group end -->
-                </div>
-                <!-- .form-box end -->
-                <div class="form-box">
-                    <h4 class="form--title">Change Password</h4>
-                    <div class="form-group">
-                        <label for="password">password</label>
-                        <input type="password" class="form-control" name="password" id="password">
-                    </div>
-                    <!-- .form-group end -->
-                    <div class="form-group">
-                        <label for="confirm-password">confirm password</label>
-                        <input type="password" class="form-control" name="confirm-password" id="confirm-password">
-                    </div>
-                    <!-- .form-group end -->
-                </div>
-                <!-- .form-box end -->
-                <input type="submit" value="Save Edits" name="submit" class="btn btn--primary">
-            </form>
         </div>
         <!-- .col-md-8 end -->
     </div>

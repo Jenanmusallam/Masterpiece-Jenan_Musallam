@@ -10,7 +10,7 @@
         <meta name="author" content="zytheme" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="Real Estate html5 template">
-        <link href="assets/images/logo/logo.png" rel="icon">
+        <link href="{{asset('assets/images/logo/logo.png')}}" rel="icon">
 
         <!-- Fonts
     ============================================= -->
@@ -24,9 +24,8 @@
         <link href="{{asset('/css/style.css')}}" rel="stylesheet">
 
         <!-- Using Icon Laibrary(font awesome) -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" /> -->
-        <!-- Document Title
-    ============================================= -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" /> 
+ 
         <title>Farhaty</title>
     </head>
 
@@ -89,18 +88,20 @@
                             <!-- Module Signup  -->
                             <div class="module module-login pull-left">
                                 <ul style="list-style: none;">
-                                    @if(!isset(session("login")['id']))
+                                    {{-- @if(!isset(session("login")['id'])) --}}
                                     <li><a class="btn-popup" href="{{asset('login')}}"><i class="fa fa-user"></i>
                                             &nbsp;
                                             Login</a></li>
-                                    @else
-                                    @if(session("loginUser")['role']=='customer')
-                                    <li><a href="{{asset('userProfile')}}" class="btn-popup">My Account</a></li>
-                                    @else
-                                    <li><a href="{{asset('admin')}}" class="btn-popup">Admin Dashboard</a></li>
-                                    <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
-                                    @endif
-                                    @endif
+                                    {{-- @else --}}
+                                    {{-- @if(session("loginUser")['role']=='customer') --}}
+                                    {{-- <li><a href="{{asset('userProfile')}}" class="btn-popup">My Account</a></li>
+                                    --}}
+                                    {{-- @else --}}
+                                    {{-- <li><a href="{{asset('admin')}}" class="btn-popup">Admin Dashboard</a></li>
+                                    --}}
+                                    {{-- <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li> --}}
+                                    {{-- @endif --}}
+                                    {{-- @endif --}}
                                 </ul>
                             </div>
                             <!-- Module Consultation  -->

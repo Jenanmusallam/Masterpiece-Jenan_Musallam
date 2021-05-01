@@ -18,7 +18,7 @@ class CreateBookingHallsTable extends Migration
             $table->string('statusPayment')->default('Processing');
             $table->date('date')->nullable();
             $table->dateTime('from_time');
-            $table->dateTime('to_time');
+            $table->dateTime('to_time')->default(2);;
             $table->string('additional_info')->nullable();
             $table->float('total_price');
             $table->boolean('IsCompleted')->default(false);

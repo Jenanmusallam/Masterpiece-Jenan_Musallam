@@ -332,8 +332,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="heading heading-2 text-center mb-70">
                     <h2 class="heading--title">Simple Steps</h2>
-                    <p class="heading--desc">Duis aute irure dolor in reprehed in volupted velit esse dolore
-                    </p>
                 </div>
                 <!-- .heading-title end -->
             </div>
@@ -348,9 +346,7 @@
                         <img src="assets/images/features/icons/5.png" alt="icon img">
                     </div>
                     <div class="feature--content">
-                        <h3>Search For Real Estates</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eule
-                            pariate.</p>
+                        <h3>Search For Real Halls</h3>
                     </div>
                 </div>
                 <!-- .feature-panel end -->
@@ -364,8 +360,6 @@
                     </div>
                     <div class="feature--content">
                         <h3>Select Your Favorite</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eule
-                            pariate.</p>
                     </div>
                 </div>
                 <!-- .feature-panel end -->
@@ -379,8 +373,6 @@
                     </div>
                     <div class="feature--content">
                         <h3>Take Your Key</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eule
-                            pariate.</p>
                     </div>
                 </div>
                 <!-- .feature-panel end -->

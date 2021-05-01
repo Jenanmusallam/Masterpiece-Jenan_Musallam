@@ -51,11 +51,11 @@
                     </div>
                     <div class="property--content">
                         <div class="property--info">
-
-                        </div>
-                        <div class="property--info">
                             <h5 class="property--title"><a
                                     href="{{asset('HallSingle/'.$HallSingle->id)}}">{{$HallSingle->name}}</a></h5>
+                            <div class="property--details">
+                                <p>{{$HallSingle->description}}</p>
+                            </div>
                             @if ($HallSingle->discount != 0)
                             <p class="property--price">
                                 {{$HallSingle->price - (($HallSingle->discount * $HallSingle->price)/100)}}
@@ -72,8 +72,8 @@
             <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 
-                @if (!isset(session("loginUser")['id'])||session("loginUser")['role']=='customer')
-                <form method="post" action="{{asset('cart')}}" class="single_product_action d-flex align-items-center">
+                <form method="post" enctype="multipart/form-data"
+                    class="single_product_action d-flex align-items-center">
                     @csrf
                     <p class="text-center"
                         style="font-size: 20px;color: white;text-shadow: 1px 1px #A68;font-weight: 500;">
@@ -84,13 +84,23 @@
                         <label style="font-weight: 700;margin-right: 1rem;">Date and Time :</label>
                         <input type="date" name="date" id="date" required value="<?php echo date('Y-m-d'); ?>"
                             min="<?php echo date('Y-m-d'); ?>" class="btn btn--date--select" required />
-                        <select name="from_time" class="btn btn--date--select" required style="padding-left: 6rem;">
+                       @if ($errors->has('date'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('date') }}
+                        </div>
+                        @endif
+                            <select name="from_time" class="btn btn--date--select" required style="padding-left: 6rem;">
                             <option value="02:00:00">02:00 PM</option>
                             <option value="04:00:00">04:00 PM</option>
                             <option value="06:00:00">06:00 PM</option>
                             <option value="08:00:00">08:00 PM</option>
                             <option value="10:00:00">10:00 PM</option>
                         </select>
+                        @if ($errors->has('from_time'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('from_time') }}
+                        </div>
+                        @endif
                     </div>
                     <hr>
                     <div class="col-xs-12 col-sm-12 col-md-12" style="margin:1rem">
@@ -102,32 +112,108 @@
                             <option value="Snacks & Juices">Snacks & Juices</option>
                             <option value="Buffet & Juices">Buffet & Juices</option>
                         </select>
-                    </div>
-                    <div>
-                        @if ($HallSingle->discount != 0)
-                        <input type="hidden" name="total_price"
-                            value="{{$HallSingle->price - (($HallSingle->discount * $HallSingle->price)/100)}}">
-                        @else
-                        <input type="hidden" name="total_price"
-                            value="{{$HallSingle->price - (($HallSingle->discount * $HallSingle->price)/100)}}">
+                        @if ($errors->has('additional_info'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('additional_info') }}
+                        </div>
                         @endif
                     </div>
-
-                    <div class="add_to_cart_btn">
-                        <input type="hidden" name="hall_id" value="{{$HallSingle->id}}">
-                        <input type="submit" value="Book Now" class="btn btn--primary" style="width: 25vw;">
-                    </div>
-                </form>
-                @endif
-
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <section id="user-profile" class="user-profile" style="padding-top: 0;padding-bottom: 0;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-3 col-lg-3">
+                                        <div class="edit--profile-area">
+                                            <label style="font-weight: 700;margin-right: 1rem;">Payment
+                                            </label>
+                                            <ul role="tablist" class="edit--profile-links list-unstyled mb-0"
+                                                style="text-align: left;">
+                                                <li><a href="#Cash" data-toggle="tab" class="nav-link">
+                                                        <input type="radio" name="statusPayment" value="Cash">
+                                                        <label for="Cash">Cash</label></a></li>
+                                                <li><a href="#creditCard" data-toggle="tab" class="nav-link">
+                                                        <input type="radio" name="statusPayment" value="Credit Card">
+                                                        <label for="Cash">Credit Card</label></a>
+                                                </li>
+                                            </ul>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-8">
+                                        <div class="tab-content Profile_content">
+                                            <div class="tab-pane fade" id="Cash">
+                                                <div class="upload--img-area">
+                                                    <div class="administrator_contnet">
+                                                        <h3>Cash <img src="{{asset('assets/images/cash.png')}}"
+                                                                style="height: 10vh;" alt="cash"></h3>
+                                                        <p style="color: black;">You have a week to pay. If the payment
+                                                            is
+                                                            not made, the
+                                                            reservation will be canceled</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="creditCard"
+                                                style="position: relative;top: -8rem;">
+                                                <h3>Credit Card </h3>
+                                                <img src="{{asset('assets/images/payment.png')}}" style="height: 10vh;"
+                                                    alt="Credit Card">
+                                                <div class="login">
+                                                    <div class="login_form_container">
+                                                        <div class="form-box">
+                                                            {{-- <form>
+                                                                @csrf
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-3">
+                                                                        <label>Credit card number</label>
+                                                                        <input class="form-control" type="tel" name=""
+                                                                            placeholder="1111-2222-3333-4444"
+                                                                            maxLength="17" required />
+                                                                        @if ($errors->has(''))
+                                                                        <div class="alert alert-danger">
+                                                                            {{ $errors->first('') }}
+                                                        </div>
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label>Security Code</label>
+                                                        <input type="password" class="form-control" placeholder="5894"
+                                                            name="" maxLength="4" required />
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputState">Expiration Data</label>
+                                                        <input type="date" name="dateExpiration" required
+                                                            class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <button class="btn btn--primary" name="submit" type="submit">
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                </form> --}}
             </div>
-            <!-- .col-md-8 end -->
         </div>
-        <!-- .row end -->
     </div>
-    <!-- .container end -->
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </section>
-<!-- #my properties  end -->
+</div>
+<div class="add_to_cart_btn">
+    <input type="hidden" name="hall_id" value="{{$HallSingle->id}}">
+    <input type="hidden" name="total_price" value="{{$HallSingle->price}}">
+    <button class="btn btn--primary" name="submit" type="submit" style="width: 25vw;">Book
+        Now</button>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+</section>
 
 <!-- cta #1
 ============================================= -->

@@ -52,15 +52,14 @@
                                     <div class="property--info">
                                         <h5 class="property--title"><a
                                                 href="{{asset('HallSingle/'.$Hall['id'])}}">{{$Hall->name}}</a></h5>
-                                        <p class="property--location">Location: {{$Hall->location}}</p>
-                                    </div>
-                                    <!-- .property-info end -->
-                                    <div class="property--features">
-                                        <ul class="list-unstyled mb-0">
-                                            <li><span class="feature">Number Hulls</span><span
-                                                    class="feature-num">{{$Hall->numHulls}}</span>
-                                            </li>
-                                        </ul>
+                                       @if ($Hall->discount != 0)
+                                        <p class="property--price">
+                                            {{$Hall->price - (($Hall->discount * $Hall->price)/100)}}
+                                            JD</p>
+                                        @else
+                                        <p class="property--price">Price {{$Hall->price}} JD</p>
+                                        @endif
+                                                {{-- <p class="property--location">Price: {{$Hall->price}} JD</p> --}}
                                     </div>
                                     <!-- .property-features end -->
                                 </div>

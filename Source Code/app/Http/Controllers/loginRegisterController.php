@@ -47,6 +47,7 @@ class loginRegisterController extends Controller
                 'fullName' => 'required',
                 'email' => 'required|email',
                 'password' => 'required|min:6',
+                'phone' => 'required',
             ]
         );
 
@@ -59,11 +60,12 @@ class loginRegisterController extends Controller
             $customer->fullName = $request->input('fullName');
             $customer->email = $request->input('email');
             $customer->password = $request->input('password');
+            $customer->phone = $request->input('phone');
             $customer->save();
 
             $id = DB::getPdo()->lastInsertId();
             $request->session()->put("loginUser", ["id" => $id, "role" => "customer"]);
-            return redirect('/');
+            return redirect('userProfile');
         }
     }
     public function logout()

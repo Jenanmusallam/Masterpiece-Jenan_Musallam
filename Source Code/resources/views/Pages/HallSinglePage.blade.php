@@ -349,7 +349,7 @@
                                     <!-- .col-md-4 end -->
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="review-comment">Review*</label>
+                                            <label for="comment">Review*</label>
                                             <textarea class="form-control" rows="5" name="comment" id="comments"
                                                 required="required"></textarea>
                                         </div>

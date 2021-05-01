@@ -23,7 +23,6 @@ class ProfileController extends Controller
             ->join('hall_singles', 'booking_halls.hall_id', 'hall_singles.id')
             ->orderBy('booking_halls.id')
             ->get();
-        // dd($booking);
         $booking_array = [];
 
         $last_element = $booking->last();

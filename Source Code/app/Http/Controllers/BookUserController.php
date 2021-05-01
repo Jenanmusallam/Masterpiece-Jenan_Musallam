@@ -18,6 +18,7 @@ class BookUserController extends Controller
         $HallSingle = HallSingle::find($id);
         $Halls = Halls::all();
         $Booking = BookingHall::all();
+        $customer=Customer::find($id);
         //  DB::table('booking_halls')
         //     ->select(
         //         'booking_halls.hall_id',
@@ -29,40 +30,33 @@ class BookUserController extends Controller
         //     ->where('booking_halls.hall_id', '=', $id)
         //     ->join('booking_halls', 'hall_singles.id', 'booking_halls.hall_id')
         //     ->get();
-        return view('Pages.booking', compact('HallSingle', 'Halls', 'Categories', 'Booking'));
+        return view('Pages.booking', compact('HallSingle', 'Halls', 'Categories', 'Booking', 'customer'));
     }
 
     public function store(Request $request)
     {
         $arr = $request->session()->get('loginUser');
         $customer_id = $arr['id'];
-        if ($request->phoneRequired) {
-            request()->validate([
-                'phone' => 'required',
-            ]);
-            $Customer = Customer::find($customer_id);
-            $Customer->phone = $request->get('phone');
-            $Customer->save();
-        }
         request()->validate([
-            'date' => 'required|exists:states',
-            'from_time' => 'required|exists:states',
+            'date' => 'required',
+            'from_time' => 'required',
             'additional_info' => 'required',
             'total_price' => 'required',
+            'statusPayment'=> 'required',
             'hall_id' => 'required',
         ]);
-
         $var = new BookingHall;
         $var->date = $request->input('date');
         $var->from_time = $request->input('from_time');
         $var->additional_info = $request->input('additional_info');
         $var->total_price = $request->input('total_price');
         $var->hall_id = $request->input('hall_id');
+        $var->statusPayment=$request->input('statusPayment');
         $var->customer_id = $customer_id;
         $var->save();
 
-        // return back()->with('success', 'successfully.');
-        $request->session()->forget('cart');
+         return back()->with('success', 'successfully.');
+        $request->session()->forget('checkout');
         return redirect("/");
     }
     public function changeStatus($id, $status)
@@ -72,47 +66,12 @@ class BookUserController extends Controller
         $booking->save();
         return back();
     }
-    public function edit($id)
+
+    public function Checkout()
     {
-        // $admin = Admin::find($id);
-        // $halls = Halls::all();
-        // return view('admin.editAdmin', compact('admin', 'halls'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // $request->validate([
-        //     'fullName' => 'required|min:4',
-        //     'email' => 'required|email',
-        //     'password' => 'required|min:6',
-        //     'halls' => 'required',
-        //     'role' => 'required',
-        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
-        // if (!empty(request()->image)) {
-        //     $imageName = time() . '.' . request()->image->getClientOriginalExtension();
-        //     request()->image->move(public_path('images'), $imageName);
-        // } else {
-        //     $admin = Admin::find($id);
-        //     $imageName = $admin->image;
-        // }
-
-        // $admin = Admin::find($id);
-        // $admin->fullName = $request->get('fullName');
-        // $admin->email = $request->get('email');
-        // $admin->password = $request->get('password');
-        // $admin->halls_id = $request->input('halls');
-        // $admin->role = $request->input('role');
-        // $admin->image = $imageName;
-        // $admin->save();
-
-        // return redirect('/admin')->with('success', 'Contact updated!');
-    }
-
-    public function destroy($id)
-    {
-        // $admin = Admin::find($id);
-        // $admin->delete();
-        // return back()->with('success', 'Admin deleted!');
+         $id = session('loginUser')['id'];
+        $customers = Customer::where('id', '=', $id)->get();
+        $customer = $customers[0];
+        return view('Pages.checkout', compact('', 'customer'));
     }
 }
