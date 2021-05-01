@@ -9,69 +9,63 @@
                     <div class="text-center">
                         <h1>Find Your Favorite Halls</h1>
                     </div>
-                    <form class="mb-0">
+                    {{-- <form action="{{ route('search') }}" method="GET">
+                    <div class="category_search_inner">
+                        <div class="search">
+                            <input type="text" placeholder="Search..." name="search">
+                        </div>
+                        <div class="submit">
+                            <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                        </div>
+                    </div>
+                    </form> --}}
+                    <form class="mb-0" action="{{ route('search') }}" method="get">
                         <div class="form-box search-properties">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="form-group">
-                                        <div class="select--box">
-                                            <i class="fa fa-angle-down"></i>
-                                            <select name="select-location" id="select-location">
+                                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                <div class="col-xs-10 col-sm-10 col-md-10">
+                                    <div class="form-group" style="display: flex;">
+                                        <input type="text" placeholder="Search..." name="search" class="form-control">
+                                        <button type="submit" class="btn btn--primary btn--block"><i
+                                                class="fas fa-search"></i>
+                                            Search</button>
+                                        {{-- <select name="search" id="location">
                                                 <option>Select Location</option>
-                                                <option>Amman</option>
-                                                <option>Irbid</option>
-                                                <option>Jerash</option>
-                                                <option>Ajloun</option>
-                                                <option>Mafraq</option>
-                                                <option>Zarqa</option>
-                                                <option>Madaba</option>
-                                                <option>Aqaba</option>
-                                                <option>Ma'an</option>
-                                                <option>Tafilah</option>
-                                                <option>Karak</option>
-                                                <option>Balqa</option>
-                                            </select>
-                                        </div>
+                                                @foreach ($Categories as $categore)
+                                                <option value="{{$categore->id}}"><a
+                                            href="CategoryPublic/{{$categore->id}}">{{$categore->name}}</a>
+                                        </option>
+                                        @endforeach
+                                        </select> --}}
+                                        {{-- <select name="select-location" id="select-location">
+                                                @foreach ($Categories as $categore)
+                                                <li><a href="CategoryPublic/{{$categore->id}}">{{$categore->name}}</a>
+                                        </li>
+                                        @endforeach
+                                        <option>Select Location</option>
+                                        <option>Amman</option>
+                                        <option>Irbid</option>
+                                        <option>Jerash</option>
+                                        <option>Ajloun</option>
+                                        <option>Mafraq</option>
+                                        <option>Zarqa</option>
+                                        <option>Madaba</option>
+                                        <option>Aqaba</option>
+                                        <option>Ma'an</option>
+                                        <option>Tafilah</option>
+                                        <option>Karak</option>
+                                        <option>Balqa</option>
+                                        </select> --}}
+
                                     </div>
                                 </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1"></div>
                                 <!-- .col-md-3 end -->
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="form-group">
-                                        <div class="select--box">
-                                            <input type="date" value="<?php echo date('Y-m-d'); ?>"
-                                                min="<?php echo date('Y-m-d'); ?>" class="btn btn--date" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .col-md-3 end -->
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="form-group">
-                                        <div class="select--box">
-                                            <i class="fa fa-angle-down"></i>
-                                            <select name="select-type" id="select-type">
-                                                <option>Time</option>
-                                                <option>2 PM</option>
-                                                <option>4 PM</option>
-                                                <option>6 PM</option>
-                                                <option>8 PM</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div><!-- .col-md-3 end -->
-                                <div class="col-xs-12 col-sm-6 col-md-3">
-                                    <div class="filter">
-                                        <p>
-                                            <label for="amount">Price Range: </label>
-                                            <input id="amount" type="text" class="amount" readonly>
-                                        </p>
-                                        <div class="slider-range"></div>
-                                    </div>
-                                </div>
-                                <!-- .col-md-3 end -->
-                                <div class="col-xs-12 col-sm-6 col-md-6">
-                                    <input type="submit" value="Search" id="select-beds" name="submit"
-                                        class="btn btn--primary btn--block btn-sub">
-                                </div>
+                                {{-- <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <button type="submit" class="btn btn--primary btn--block btn-sub"><i
+                                            class="fas fa-search"></i>
+                                        Search</button>
+                                </div> --}}
                             </div>
                             <!-- .row end -->
                         </div>
@@ -143,7 +137,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category/">
-                            <img src="assets/images/properties/city/1.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/1.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Amman</h5>
@@ -161,7 +155,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category/">
-                            <img src="assets/images/properties/city/2.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/2.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Irbid</h5>
@@ -182,7 +176,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category/">
-                            <img src="assets/images/properties/city/3.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/3.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Jerash</h5>
@@ -200,7 +194,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category">
-                            <img src="assets/images/properties/city/4.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/4.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Dead Sea</h5>
@@ -218,7 +212,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category">
-                            <img src="assets/images/properties/city/5.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/5.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Aqaba</h5>
@@ -236,7 +230,7 @@
                 <div class="property-city-item">
                     <div class="property--city-img">
                         <a href="Category">
-                            <img src="assets/images/properties/city/6.jpg" alt="city" class="img-responsive">
+                            <img src="assets/images/city/6.jpg" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Al Zarqa</h5>

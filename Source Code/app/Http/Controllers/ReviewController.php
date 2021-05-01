@@ -22,11 +22,10 @@ class ReviewController extends Controller
         ]);
         $review = new Reviews();
         $review->customer_id = $customer_id;
-        $review->hull_id  = $hull_id;
+        $review->hall_id  = $hull_id;
         $review->comment = $request->get('comment');
         $review->rate = $request->get('rate');
         $review->save();
-        dd($review);
         return redirect('/HallSingle/' . $hull_id);
     }
 

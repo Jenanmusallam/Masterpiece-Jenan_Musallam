@@ -86,16 +86,6 @@
                                 <!-- li end -->
 
                                 <li><a href="{{asset('ContactSite')}}">Contact</a></li>
-                                {{-- <form action="{{ route('search') }}" method="GET">
-                                <div class="category_search_inner">
-                                    <div class="search">
-                                        <input type="text" placeholder="Search..." name="search">
-                                    </div>
-                                    <div class="submit">
-                                        <button type="submit"><i class="zmdi zmdi-search"></i></button>
-                                    </div>
-                                </div>
-                                </form> --}}
                             </ul>
                             <!-- Module Signup  -->
                             <div class="module module-login pull-left">
