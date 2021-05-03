@@ -7,9 +7,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!--IE Compatibility Meta-->
-        <meta name="author" content="zytheme" />
+        <meta name="author" content="Jenan Musallam" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="Real Estate html5 template">
+        <meta name="description" content="Farhaty is The idea of reservation of halls for different types of events.">
+        <meta name="keywords" content="Halls, Hall, Weeding, Graduation, Party, Event, Booking, Reservation, Happy">
         <link href="{{asset('assets/images/logo/logo.png')}}" rel="icon">
 
         <!-- Fonts
@@ -22,12 +23,6 @@
         <link href="{{asset('assets/css/external.css')}}" rel="stylesheet">
         <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{asset('/css/style.css')}}" rel="stylesheet">
-
-        <!-- Using Icon Laibrary(font awesome) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-            integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
-            crossorigin="anonymous" />
-
         <title>Farhaty</title>
     </head>
 
@@ -67,7 +62,7 @@
                                     <a href="{{asset('CategoryPublic')}}">City</a>
                                     <ul class="dropdown-menu">
                                         @foreach ($Categories as $categore)
-                                        <li><a href="CategoryPublic/{{$categore->id}}">{{$categore->name}}</a>
+                                        <li><a href="{{asset('CategoryPublic/'.$categore->id)}}">{{$categore->name}}</a>
                                         </li>
                                         @endforeach
                                     </ul>
@@ -78,7 +73,7 @@
                                     <a href="{{asset('HallsPublic')}}">Halls</a>
                                     <ul class="dropdown-menu">
                                         @foreach ($Halls as $Halls)
-                                        <li><a href="HallsPublic/{{$Halls['id']}}">{{$Halls->name}}</a>
+                                        <li><a href="{{asset('HallsPublic/'.$Halls->id)}}">{{$Halls->name}}</a>
                                         </li>
                                         @endforeach
                                     </ul>

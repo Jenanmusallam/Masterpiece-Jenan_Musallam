@@ -22,25 +22,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => [
     Route::resource('Customer', 'CustomerController');
     Route::get('booking', 'BookingController@index');
     Route::get('booking/{id}/{status}', 'BookingController@changeStatus');
+    Route::get('/search/', 'HallsController@search')->name('search');
 });
 
 
 // ======================
-
-
-// Route::get('login', function () {
-//     return view('admin.login');
-// });
-
-Route::get('side-menu-crud-data-list', function () {
-    return view('admin.side-menu-crud-data-list');
-});
-Route::get('side-menu-datepicker', function () {
-    return view('admin.side-menu-datepicker');
-});
-Route::get('icon', function () {
-    return view('admin.icon');
-});
 
 // End admin Dashboard
 
@@ -63,10 +49,11 @@ Route::post('HallSingle/{id}', 'ReviewController@store');
 
 Route::get('/search/', 'ShowPublicController@search')->name('search');
 // ==========================
+
+
 // ==========================
 Route::get('userProfile', 'ProfileController@index');
 Route::patch('userProfile', 'ProfileController@update');
-
 
 //============= public Side================ 
 
@@ -77,15 +64,8 @@ Route::post('ContactSite', 'ContactController@store');
 
 Route::get('about', 'AboutController@index');
 
-Route::get('profile', function () {
-    return view('Pages.user-profile');
-});
-Route::get('404', 'cartController@index');
-Route::get('book', 'BookingController@book');
-
 Route::get('bookNow/{id}', 'BookUserController@index');
-Route::post('bookNow/{id}', 'BookUserController@store');
-// Route::get('HallSingle','HallController@create');
+Route::post('bookNow', 'BookUserController@store');
 
 Route::get('/login', 'loginRegisterController@index');
 // ======================
@@ -93,8 +73,3 @@ Route::post('/login', 'loginRegisterController@login');
 Route::post('/register', 'loginRegisterController@register');
 Route::get('/logout', 'loginRegisterController@logout');
 // ======================
-
-// loginTest
-// Route::get('loginTest', function () {
-//     return view('Pages.loginTest');
-// });

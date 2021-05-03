@@ -187,8 +187,14 @@
                     <!-- BEGIN: Search -->
                     <div class="intro-x relative mr-3 sm:mr-6">
                         <div class="search hidden sm:block">
-                            <input type="text" class="search__input input placeholder-theme-13" placeholder="Search...">
-                            <i data-feather="search" class="search__icon"></i>
+                            <form action="{{ route('search') }}" method="GET">
+                                <div class="category_search_inner">
+                                    <input type="text" class="search__input input placeholder-theme-13"
+                                        placeholder="Search..." name="search">
+                                    <i data-feather="search" class="search__icon"></i>
+                                    <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- END: Search -->

@@ -16,8 +16,8 @@
         </h2>
       </div>
       @if ($message = Session::get('success'))
-      <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-18 text-theme-9" style=" width: 35vw;margin: auto;"> <i
-          data-feather="thumbs-up"></i>
+      <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-18 text-theme-9"
+        style=" width: 35vw;margin: auto;"> <i data-feather="thumbs-up"></i>
         <p>{{ $message }}</p>
       </div>
       @endif
@@ -29,16 +29,16 @@
               <label>Category Name</label>
               <input name="name" type="text" class="input w-full border mt-2">
               @if ($errors->has('name'))
-              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i data-feather="alert-octagon"
-                  class="w-6 h-6 mr-2"></i>{{ $errors->first('name') }}</div>
+              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
+                  data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('name') }}</div>
               @endif
             </div>
             <div class="mt-3">
               <label for="image" class="control-label mb-1">Category image</label>
               <input name="image" type="file" class="form-control input w-full border mt-2">
               @if ($errors->has('image'))
-              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i data-feather="alert-octagon"
-                  class="w-6 h-6 mr-2"></i>{{ $errors->first('image') }}</div>
+              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
+                  data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('image') }}</div>
               @endif
             </div>
             <div class="mt-3">
@@ -74,7 +74,9 @@
 
                   <td>
                     <div class="image img-cir img-40">
-                      <img src="{{asset("images/{$category->image}")}}">
+                      <img src="{{asset("images/{$category->image}")}}" style="
+                      height: 15vh; w
+                      ">
                     </div>
                   </td>
                   <td>

@@ -81,7 +81,7 @@
             </div>
             <div class="mt-3">
               <label for="video" class="control-label mb-1">Video Hull</label>
-              <input type="url" class="input w-full border mt-2" name="video" id="video">
+              <input type="text" class="input w-full border mt-2" name="video" id="video">
               @if ($errors->has('video'))
               <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
                   data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('numHulls') }}
@@ -99,7 +99,12 @@
             </div>
             <div class="mt-3">
               <label for="is_available" class="control-label mb-1">Hall Is Available</label>
-              <input type="text" class="input w-full border mt-2" name="is_available" id="is_available">
+              <select class="input w-full border mt-2 select2" style="width: 80vw;" data-hide-search="true"
+                name="is_available" id="is_available" style="width: 71vw;">
+                <option disabled selected>Is Available</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
               @if ($errors->has('is_available'))
               <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
                   data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('is_available') }}
@@ -124,18 +129,17 @@
         <div class="col-md-12">
           <!-- DATA TABLE-->
           <div class="table-responsive m-b-40">
-            <table class="table table-borderless table-data3 text-center">
+            <table class="table table-borderless table-data3 text-center" style="overflow: scroll;">
               <thead style="background: rgba(2, 118, 170, 1);color: white;">
                 <tr>
-                  <th>name</th>
+                  <th>Halls</th>
+                  <th>Name</th>
                   <th>Image</th>
                   <th>Description</th>
                   <th>Style</th>
                   <th>Price</th>
                   <th>Discount</th>
                   <th>Is Available</th>
-                  <th>Video</th>
-                  <th>Halls</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -143,11 +147,11 @@
               <tbody>
                 @foreach($HallSingle as $halls)
                 <tr>
-
+                  <td>{{$halls->halls_name}}</td>
                   <td>{{$halls->name}}</td>
                   <td>
                     <div class="image img-cir img-40">
-                      <img src="{{asset("images/{$halls->image}")}}" style="height: 28vh;  margin: auto;">
+                      <img src="{{asset("images/{$halls->image}")}}" style="height: 6vh;  margin: auto;">
 
                     </div>
                   </td>
@@ -156,12 +160,10 @@
                   <td>{{$halls->price }}</td>
                   <td>{{$halls->discount }}</td>
                   <td>{{$halls->is_available }}</td>
-                  <td>{{$halls->video }}</td>
-                  <td>{{$halls->halls_name}}</td>
                   <td>
                     <a href="{{ route('admin.hall.edit', $halls->id)}}"
                       class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i
-                        data-feather="edit" class="w-4 h-4 mr-1"></i>Edit</a>
+                        data-feather="edit" class="w-4 h-4 mr-1"></i></a>
                   </td>
                   <td>
                     <form action="{{ route('admin.hall.destroy', $halls->id)}}" method="post">
@@ -169,7 +171,7 @@
                       @method('DELETE')
                       <button type="submit"
                         class="button mr-2 mb-2 flex items-center justify-center bg-theme-6 text-white"><i
-                          data-feather="trash" class="w-4 h-4 mr-1"></i> Delete </button>
+                          data-feather="trash" class="w-4 h-4 mr-1"></i> </button>
                     </form>
                   </td>
 

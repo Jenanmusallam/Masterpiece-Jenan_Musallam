@@ -87,7 +87,7 @@
                   <td>{{$images->name}}</td>
                   <td>
                     <div class="image img-cir img-40">
-                      <img src="{{asset("images/{$images->img_name}")}}" style="height: 28vh;  margin: auto;">
+                      <img src="{{asset("images/{$images->img_name}")}}" style="height: 20vh;  margin: auto;">
 
                     </div>
                   </td>

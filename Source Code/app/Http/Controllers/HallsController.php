@@ -94,4 +94,13 @@ class HallsController extends Controller
 
         return back()->with('success', 'Halls deleted!');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $Halls = Halls::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->paginate(4);
+        return view('Pages.Category', compact('Halls'));
+    }
 }

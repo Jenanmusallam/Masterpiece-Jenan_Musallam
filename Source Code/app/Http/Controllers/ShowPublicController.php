@@ -21,16 +21,25 @@ class ShowPublicController extends Controller
 
     public function Categories()
     {
-        $Halls = Halls::paginate(9);
         $Categories = Category::select('id', 'name')->get();
+        $Halls = DB::table('halls')
+            ->select('halls.id', 'halls.name', 'halls.image', 'halls.numHulls', 'categories.name AS category_name')
+            ->join("categories", "halls.category_id", "categories.id")
+            ->paginate(10);
         $DiscountHalls = HallSingle::where('discount', '!=', '0')->get();
         return view('Pages.Category', compact('Halls', 'Categories', 'DiscountHalls'));
     }
     public function CategoriesID($id)
     {
-        $Halls = Halls::where('category_id', $id)->paginate(9);
+        // $Halls = Halls::all();
+        $Halls = DB::table('halls')
+            ->select('halls.id', 'halls.name', 'halls.image', 'halls.numHulls', 'categories.name AS category_name')
+            ->where('category_id', $id)
+            ->join("categories", "halls.category_id", "categories.id")
+            ->paginate(6);
+
         $Categories = Category::select('id', 'name')->get();
-        $DiscountHalls = HallSingle::where('discount', '!=', '0')->get();
+        $DiscountHalls = HallSingle::where('discount', '!=', '0')->paginate(5);
         return view('Pages.Category', compact('Halls', 'Categories', 'DiscountHalls'));
     }
     public function Halls()
@@ -52,9 +61,10 @@ class ShowPublicController extends Controller
         $Categories = Category::all();
         $Halls = Halls::all();
         $HallSingle = DB::table('hall_singles')
-            ->select('hall_singles.id', 'hall_singles.name', 'hall_singles.image', 'hall_singles.price', 'hall_singles.discount', 'hall_singles.video', 'hall_singles.style', 'hall_singles.description',  'hall_singles.is_available', 'halls.name AS halls_name', 'halls.id AS halls_id', 'halls.image AS halls_image', 'halls.location AS halls_location', 'halls.category_id AS category_id')
+            ->select('hall_singles.id', 'hall_singles.name', 'hall_singles.image', 'hall_singles.price', 'hall_singles.discount', 'hall_singles.video', 'hall_singles.style', 'hall_singles.description',  'hall_singles.is_available', 'halls.name AS halls_name', 'halls.id AS halls_id', 'halls.image AS halls_image', 'halls.location AS halls_location', 'categories.name AS category_name')
             ->where('hall_singles.id', $id)
             ->join("halls", "hall_singles.halls_id", "halls.id")
+            ->join("categories", "halls.category_id", "categories.id")
             ->get();
         $HallSingle = $HallSingle[0];
         $reviews = DB::table('customers')
@@ -85,15 +95,11 @@ class ShowPublicController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        // dd($request);
         $Halls = Halls::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->paginate(4);
-        // dd($Halls);
         $Categories = Category::select('id', 'name')->get();
-        // dd($Categories);
         $DiscountHalls = HallSingle::where('discount', '!=', '0')->get();
-        // dd($DiscountHalls);
         return view('Pages.Category', compact('Halls', 'Categories', 'DiscountHalls'));
     }
 }

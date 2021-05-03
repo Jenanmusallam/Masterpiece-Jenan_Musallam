@@ -8,7 +8,7 @@
 </section>
 <div class="container login-container">
     <div class="row">
-        <div class="col-md-6 login-form-1">
+        <div class="col-md-6 login-form-1" style="height: 116vh;">
             <img src="{{asset('assets/images/login/(2).svg')}}">
             <h3>Login</h3>
             @if ($message = Session::get('Error'))

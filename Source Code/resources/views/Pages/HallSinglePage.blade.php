@@ -3,7 +3,7 @@
 ============================================ -->
 <section id="page-title" class="page-title bg-overlay bg-overlay-dark2">
     <div class="bg-section">
-        <img src="assets/images/page-titles/1.jpg" alt="Background" />
+        <img src="{{asset('assets/images/page-titles/1.jpg')}}" alt="Background" />
     </div>
     <div class="container">
         <div class="row">
@@ -46,7 +46,7 @@
                         <div class="pull-left">
                             <h5 class="property--title">{{$HallSingle->name}}</h5>
                             <p class="property--location"><i
-                                    class="fa fa-map-marker"></i>{{$HallSingle->halls_location}}
+                                    class="fa fa-map-marker"></i>{{$HallSingle->category_name}}
                             </p>
                         </div>
                         <div class="pull-right">
@@ -108,9 +108,9 @@
                                     data-autoplay="true" data-thumbs="true" data-nav="true" data-dots="false"
                                     data-space="30" data-loop="true" data-speed="800" data-slider-id="1">
                                     <img src="{{asset('images/'.$HallSingle->halls_image)}}" alt="Property Image"
-                                        style="height: 100vh;">
+                                        style="height: 100vh; margin: auto;">
                                     <img src="{{asset('images/'.$HallSingle->image)}}" alt="Property Image"
-                                        style="height: 100vh;">
+                                        style="height: 100vh; margin: auto;">
                                 </div>
                                 <!-- .carousel end -->
                             </div>
@@ -281,7 +281,7 @@
                         <!-- .col-md-12 end -->
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <ul class="property-review">
-                                @foreach ($reviews as $review)
+                                @forelse ($reviews as $review)
                                 <li class="review-comment">
                                     <div class="avatar">
                                         <img width="60px" style="border-radius: 50%;"
@@ -298,7 +298,10 @@
                                         <p>{{ $review->comment }}</p>
                                     </div>
                                 </li>
-                                @endforeach
+                                @empty
+                                <h2 style="text-align: center;">Empty Review</h2>
+                                <img src={{asset("assets/images/empty.svg")}} style="height: 31vh; margin-left: 30rem;">
+                                @endforelse
                                 <!-- comment end -->
                             </ul>
                             <!-- .comments-list end -->
@@ -393,7 +396,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="carousel carousel-dots" data-slide="3" data-slide-rs="1" data-autoplay="true"
                     data-nav="false" data-dots="true" data-space="25" data-loop="true" data-speed="800">
-                    @foreach ($relatedHallSingle as $HallSingle)
+                    @forelse ($relatedHallSingle as $HallSingle)
                     <!-- .property-item #1 -->
                     <div class="property-item">
                         <div class="property--img">
@@ -412,7 +415,10 @@
                             <!-- .property-info end -->
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                    <h2 style="text-align: center;">Empty Halls</h2>
+                    <img src={{asset("assets/images/empty.svg")}}>
+                    @endforelse
                     <!-- .property item end -->
                 </div>
                 <!-- .carousel end -->

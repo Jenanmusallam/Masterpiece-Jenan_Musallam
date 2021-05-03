@@ -26,6 +26,20 @@
         <div class="p-5" id="vertical-form">
           <div class="preview">
             <div>
+              <label for="category">Category</label>
+              <select class="input w-full border mt-2 select2" data-hide-search="true" name="category" id="category">
+                <option disabled selected>Select Category</option>
+                @foreach ($Categories as $Category)
+                <option value={{$Category->id}}>{{$Category->name}}</option>
+                @endforeach
+              </select>
+              @if ($errors->has('category'))
+              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
+                  data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('category') }}
+              </div>
+              @endif
+            </div>
+            <div class="mt-3">
               <label for="name">Halls Name</label>
               <input name="name" type="text" class="input w-full border mt-2">
               @if ($errors->has('name'))
@@ -65,20 +79,7 @@
               </div>
               @endif
             </div>
-            <div class="mt-3">
-              <label for="category">Category</label>
-              <select class="input w-full border mt-2 select2" data-hide-search="true" name="category" id="category">
-                <option disabled selected>Select Category</option>
-                @foreach ($Categories as $Category)
-                <option value={{$Category->id}}>{{$Category->name}}</option>
-                @endforeach
-              </select>
-              @if ($errors->has('category'))
-              <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
-                  data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('category') }}
-              </div>
-              @endif
-            </div>
+
 
             <div class="mt-3">
               <button id="payment-button" type="submit" class="button bg-theme-1 text-white mt-5 w-full"
@@ -100,12 +101,11 @@
             <table class="table table-borderless table-data3 text-center">
               <thead style="background: rgba(2, 118, 170, 1);color: white;">
                 <tr>
+                  <th>City</th>
                   <th>Name</th>
                   <th>Image</th>
                   <th>Description</th>
                   <th>Number Hulls</th>
-                  <th>Location</th>
-                  <th>Category</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -113,18 +113,16 @@
               <tbody>
                 @foreach($Halls as $halls)
                 <tr>
-
+                  <td>{{$halls->category_name}}</td>
                   <td>{{$halls->name}}</td>
                   <td>
                     <div class="image img-cir img-40">
-                      <img src="{{asset("images/{$halls->image}")}}" style="height: 28vh;  margin: auto;">
+                      <img src="{{asset("images/{$halls->image}")}}" style="height: 8vh;  margin: auto;">
 
                     </div>
                   </td>
                   <td>{{$halls->description }}</td>
                   <td>{{$halls->numHulls }}</td>
-                  <td>{{$halls->location }}</td>
-                  <td>{{$halls->category_name}}</td>
                   <td>
                     <a href="{{ route('admin.halls.edit', $halls->id)}}"
                       class="button mr-2 mb-2 flex items-center justify-center bg-theme-12 text-white"><i

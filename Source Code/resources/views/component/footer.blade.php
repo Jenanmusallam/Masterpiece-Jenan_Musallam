@@ -27,11 +27,11 @@
                     </div>
                     <div class="widget--content">
                         <ul class="list-unstyled mb-0">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Properties</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{asset('/')}}">Home</a></li>
+                            <li><a href="{{asset('about')}}">About us</a></li>
+                            <li><a href="{{asset('CategoryPublic')}}">City</a></li>
+                            <li><a href="{{asset('HallsPublic')}}">Halls</a></li>
+                            <li><a href="{{asset('ContactSite')}}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,28 +42,40 @@
                     </div>
                     <div class="widget--content">
                         <ul class="list-unstyled mb-0">
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">FAQ</a></li>
+                            @if(!isset(session("loginUser")['id']))
+                            <li><a class="btn-popup" href="{{asset('login')}}"><i class="fa fa-user"></i>
+                                    &nbsp;
+                                    Login</a></li>
+                            @else
+                            @if(session("loginUser")['role']=='customer')
+                            <li><a href="{{asset('userProfile')}}" class="btn-popup">My Account</a></li>
+                            <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
+                            @else
+                            <li><a href="{{asset('admin')}}" class="btn-popup">Admin Dashboard</a></li>
+
+                            <li><a href="{{asset('logout')}}" class="btn-popup">Logout</a></li>
+                            @endif
+                            @endif
                         </ul>
                     </div>
                 </div>
                 <!-- .col-md-2 end -->
                 <div class="col-xs-12 col-sm-12 col-md-4 widget--newsletter">
                     <div class="widget--title">
-                        <h5>newsletter</h5>
+                        <h5>send massage</h5>
                     </div>
                     <div class="widget--content">
-                        <form class="newsletter--form mb-40">
-                            <input type="email" class="form-control" id="newsletter-email" placeholder="Email Address">
-                            <button type="submit"><i class="fa fa-arrow-right"></i></button>
+                        <form class="newsletter--form mb-40" style="width: 14vw; left: 5rem;">
+                            <input type="email" class="form-control" readonly>
+                            <button type="submit"><a href="{{asset('ContactSite')}}"><i class="fa fa-arrow-right"
+                                        style="font-size: 2rem;"></i></a></button>
                         </form>
                         <h6>Get In Touch</h6>
                         <div class="social-icons">
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-vimeo"></i></a>
+                            <a href="https://github.com/Jenanmusallam"><i class="fa fa-github"></i></a>
+                            <a href="https://www.facebook.com/jenan.musallam"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/jenan-musallam/"><i
+                                    class="fa fa-linkedin-square"></i></a>
                         </div>
                     </div>
                 </div>

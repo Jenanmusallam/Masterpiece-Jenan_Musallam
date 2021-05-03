@@ -3,7 +3,7 @@
 ============================================ -->
 <section id="page-title" class="page-title bg-overlay bg-overlay-dark2">
     <div class="bg-section">
-        <img src="assets/images/cartBackground.png" alt="Background" />
+        <img src="{{asset('assets/images/cartBackground.png')}}" alt="Background" />
     </div>
     <div class="container">
         <div class="row">
@@ -14,7 +14,7 @@
                             <h1>Booking</h1>
                         </div>
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="{{asset('/')}}">Home</a></li>
                             <li class="active">Booking</li>
                         </ol>
                     </div>
@@ -35,14 +35,14 @@
 <section id="my-properties" class="my-properties properties-list">
     <div class="container">
         <div class="row"
-            style=" text-align: center; background: -webkit-linear-gradient(left, #ea236f8f, #20acd286); padding: 3rem;">
+            style=" text-align: center; background: -webkit-linear-gradient(left, #ea236f8f, #20acd286); padding-top: 3rem; padding-bottom: 3rem;">
             <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <!-- .property-item #1 -->
                 <div class="property-item">
                     <div class="property--img">
                         <a href="{{asset('HallSingle/'.$HallSingle->id)}}">
-                            <img src="{{asset('images/'.$HallSingle->image)}}" alt="property image"
+                            <img src="{{asset('images/'.$HallSingle->image)}}" style="height:30vh;" alt="property image"
                                 class="img-responsive">
                             @if ($HallSingle->discount != 0)
                             <span class="property--status">For Sale</span>
@@ -72,9 +72,10 @@
             <div class="col-xs-2 col-sm-2 col-md-2"></div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 
-                <form method="post" action="userProfile" enctype="multipart/form-data"
+                <form method="post" enctype="multipart/form-data" action="{{url('bookNow')}}"
                     class="single_product_action d-flex align-items-center">
                     @csrf
+                    {{-- <input type="submit" value="submit"> --}}
                     <p class="text-center"
                         style="font-size: 20px;color: white;text-shadow: 1px 1px #A68;font-weight: 500;">
                         Enter the Booking Date and
@@ -90,6 +91,7 @@
                         </div>
                         @endif
                         <select name="from_time" class="btn btn--date--select" required style="padding-left: 6rem;">
+                            <option disabled selected>Select Time</option>
                             <option value="02:00">02:00 PM</option>
                             <option value="04:00">04:00 PM</option>
                             <option value="06:00">06:00 PM</option>
@@ -108,6 +110,7 @@
                         </label>
                         <select name="additional_info" class="btn btn--date--select" required
                             style="padding-left: 6rem;">
+                            <option disabled selected>Additional</option>
                             <option value="Cake & Juices">Cake & Juices</option>
                             <option value="Snacks & Juices">Snacks & Juices</option>
                             <option value="Buffet & Juices">Buffet & Juices</option>
@@ -117,35 +120,45 @@
                             {{ $errors->first('additional_info') }}
                         </div>
                         @endif
+
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4"></div>
+                    <div class="col-xs-4 col-sm-4 col-md-4"
+                        style=" background-color: #ffffff; border-radius: 4px;padding: 21px 40px;margin-bottom: 30px;">
+                        <label style="font-weight: 700;margin-right: 1rem;">Payment
+                        </label>
+                        <br />
                         <input type="radio" name="statusPayment" value="Cash">
                         <label for="Cash">Cash</label>
                         <input type="radio" name="statusPayment" value="Credit Card">
                         <label for="Credit Card">Credit Card</label>
+                        @if ($errors->has('statusPayment'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('statusPayment') }}
+                        </div>
+                        @endif
                     </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4"></div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <section id="user-profile" class="user-profile" style="padding-top: 0;padding-bottom: 0;">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-3 col-lg-3">
                                         <div class="edit--profile-area">
-                                            <label style="font-weight: 700;margin-right: 1rem;">Payment
-                                            </label>
                                             <ul role="tablist" class="edit--profile-links list-unstyled mb-0"
                                                 style="text-align: left;">
-                                                <li><a href="#Cash" data-toggle="tab" class="nav-link">
-                                                        <input type="radio" name="statusPayment" value="Cash">
+                                                <li><a href="#Cash" data-toggle="tab" class="nav-link active">
                                                         <label for="Cash">Cash</label></a></li>
                                                 <li><a href="#creditCard" data-toggle="tab" class="nav-link">
-                                                        <input type="radio" name="statusPayment" value="Credit Card">
                                                         <label for="Cash">Credit Card</label></a>
                                                 </li>
                                             </ul>
 
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-8">
+                                    <div class="col-xs-12 col-sm-12 col-md-8" style="height: 56vh;">
                                         <div class="tab-content Profile_content">
-                                            <div class="tab-pane fade" id="Cash">
+                                            <div class="tab-pane fade show active" id="Cash">
                                                 <div class="upload--img-area">
                                                     <div class="administrator_contnet">
                                                         <h3>Cash <img src="{{asset('assets/images/cash.png')}}"
@@ -158,47 +171,41 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="creditCard"
-                                                style="position: relative;top: -8rem;">
+                                                style="position: relative;top: -8rem; height: 52vh;">
                                                 <h3>Credit Card </h3>
-                                                <img src="{{asset('assets/images/payment.png')}}" style="height: 10vh;"
-                                                    alt="Credit Card">
+                                                <img src="{{asset('assets/images/payment.png')}}"
+                                                    style="height: 10vh;margin: auto;" alt="Credit Card">
                                                 <div class="login">
                                                     <div class="login_form_container">
                                                         <div class="form-box">
-                                                            <form>
-                                                                @csrf
+                                                            <div>
                                                                 <div class="form-row">
-                                                                    <div class="form-group col-md-3">
+                                                                    <div class="form-group col-md-4">
                                                                         <label>Credit card number</label>
                                                                         <input class="form-control" type="tel" name=""
                                                                             placeholder="1111-2222-3333-4444"
-                                                                            maxLength="17" required />
-                                                                        @if ($errors->has(''))
-                                                                        <div class="alert alert-danger">
-                                                                            {{ $errors->first('') }}
-                                                                        </div>
-                                                                        @endif
+                                                                            maxLength="17" />
+
                                                                     </div>
-                                                                    <div class="form-group col-md-3">
+                                                                    <div class="form-group col-md-4">
                                                                         <label>Security Code</label>
                                                                         <input type="password" class="form-control"
-                                                                            placeholder="5894" name="" maxLength="4"
-                                                                            required />
+                                                                            placeholder="5894" name="" maxLength="4" />
                                                                     </div>
-                                                                    <div class="form-group col-md-3">
+                                                                    <div class="form-group col-md-4">
                                                                         <label for="inputState">Expiration Data</label>
                                                                         <input type="date" name="dateExpiration"
-                                                                            required class="form-control"
+                                                                            class="form-control"
                                                                             value="<?php echo date('Y-m-d'); ?>">
                                                                     </div>
-                                                                    <div class="form-group col-md-3">
-                                                                        <button class="btn btn--primary" name="submit"
-                                                                            type="submit">
+                                                                    <div class="form-group col-md-12">
+                                                                        <button class="btn btn--primary" name=""
+                                                                            type="">
                                                                             Submit
                                                                         </button>
                                                                     </div>
                                                                 </div>
-                                                            </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

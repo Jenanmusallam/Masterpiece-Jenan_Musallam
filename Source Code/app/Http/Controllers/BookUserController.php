@@ -8,7 +8,6 @@ use App\Halls;
 use App\Customer;
 use App\BookingHall;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class BookUserController extends Controller
 {
@@ -44,9 +43,8 @@ class BookUserController extends Controller
         $var->statusPayment = $request->input('statusPayment');
         $var->customer_id = $customer_id;
         $var->save();
-        return back()->with('success', 'successfully.');
         $request->session()->forget('checkout');
-        return redirect("/");
+        return redirect("/userProfile");
     }
     public function changeStatus($id, $status)
     {

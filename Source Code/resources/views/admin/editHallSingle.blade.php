@@ -62,7 +62,7 @@
             </div>
             <div class="mt-3">
               <label for="video" class="control-label mb-1">video Hulls</label>
-              <input type="url" class="input w-full border mt-2" name="video" id="video" value="{{ $hall-> video }}">
+              <input type="text" class="input w-full border mt-2" name="video" id="video" value="{{ $hall-> video }}">
               @if ($errors->has('video'))
               <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"> <i
                   data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>{{ $errors->first('numHulls') }}

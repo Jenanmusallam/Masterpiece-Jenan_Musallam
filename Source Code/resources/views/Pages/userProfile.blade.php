@@ -44,7 +44,7 @@
                         </li>
                         <li><a href="#account-details" data-toggle="tab" class="nav-link">Edit
                                 Profile</a></li>
-                        <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
+                        <li> <a href="#orders" data-toggle="tab" class="nav-link">Book</a></li>
                         <li><a href="logout" class="nav-link">logout</a></li>
                     </ul>
                 </div>
@@ -115,7 +115,7 @@
 
                         <div class="lion_table_area table-responsive">
                             <!-- .property-item #1 -->
-                            @foreach ($booking as $book)
+                            @forelse ($booking as $book)
                             <div class="property-item">
                                 <div class="property--img">
                                     <a href="{{asset('HallSingle/'.$book->hallId)}}">
@@ -151,7 +151,10 @@
                                     <!-- .property-features end -->
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            <h2 style="text-align: center;">Empty Booking</h2>
+                            <img src={{asset("assets/images/empty.svg")}} style="height: 74vh;">
+                            @endforelse
                             <!-- .property item end -->
                             <div class="card mb-3" style="max-width: 540px;">
 

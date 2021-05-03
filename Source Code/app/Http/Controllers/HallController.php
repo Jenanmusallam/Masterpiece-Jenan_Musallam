@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Category;
 use App\Halls;
 use App\HallSingle;
@@ -9,32 +10,40 @@ use Illuminate\Support\Facades\DB;
 
 class HallController extends Controller
 {
-      public function index()
-    {   $Categories = Category::all();
+    public function index()
+    {
+        $Categories = Category::all();
         $HallSingle = DB::table('hall_singles')
-            ->select('hall_singles.id', 'hall_singles.name', 'hall_singles.image', 'hall_singles.style', 
-            'hall_singles.video', 'hall_singles.price', 'hall_singles.discount', 
-            'hall_singles.description', 'hall_singles.is_available', 'halls.name AS halls_name')
+            ->select(
+                'hall_singles.id',
+                'hall_singles.name',
+                'hall_singles.image',
+                'hall_singles.style',
+                'hall_singles.video',
+                'hall_singles.price',
+                'hall_singles.discount',
+                'hall_singles.description',
+                'hall_singles.is_available',
+                'halls.name AS halls_name'
+            )
             ->join("halls", "hall_singles.halls_id", "halls.id")
             ->get();
         $Halls = Halls::all();
-        return view('admin.hall', compact('HallSingle', 'Halls','Categories'));
+        return view('admin.hall', compact('HallSingle', 'Halls', 'Categories'));
     }
     public function create()
     {
         $Categories = Category::all();
         $Halls = Halls::all();
-        return view('Pages.HallSinglePage', compact( 'Halls','Categories'));
+        return view('Pages.HallSinglePage', compact('Halls', 'Categories'));
     }
 
     public function store(Request $request)
     {
         request()->validate([
             'name' => 'required|min:4',
-            'style' => 'required',
             'video' => 'required ',
             'price' => 'required | numeric | min:0 ',
-            'discount' => 'required | numeric | min:0 | max:100',
             'description' => 'required',
             'is_available' => 'required',
             'halls_id' => 'required',
@@ -74,7 +83,7 @@ class HallController extends Controller
             'name' => 'required|min:4',
             'style' => 'required',
             'video' => 'required ',
-            'price' => 'required | numeric | min:0 | max:100',
+            'price' => 'required | numeric | min:0',
             'discount' => 'required | numeric | min:0 | max:100',
             'description' => 'required',
             'is_available' => 'required',
@@ -108,4 +117,5 @@ class HallController extends Controller
         $Halls->delete();
         return back()->with('success', 'Hall deleted!');
     }
+    
 }

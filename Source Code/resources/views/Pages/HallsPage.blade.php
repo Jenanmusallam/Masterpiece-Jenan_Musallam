@@ -38,28 +38,28 @@
             <!-- .col-md-4 end -->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="row">
-                    @foreach ($HallSingle as $Hall)
+                    @forelse ($HallSingle as $Hall)
                     <div class="properties properties-grid">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="property-item">
                                 <div class="property--img">
                                     <a href="{{asset('HallSingle/'.$Hall['id'])}}">
                                         <img src="{{asset("images/".$Hall->image)}}" alt="property image"
-                                            class="img-responsive">
+                                            style="height: 45vh;" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="property--content">
                                     <div class="property--info">
                                         <h5 class="property--title"><a
                                                 href="{{asset('HallSingle/'.$Hall['id'])}}">{{$Hall->name}}</a></h5>
-                                       @if ($Hall->discount != 0)
+                                        @if ($Hall->discount != 0)
                                         <p class="property--price">
                                             {{$Hall->price - (($Hall->discount * $Hall->price)/100)}}
                                             JD</p>
                                         @else
                                         <p class="property--price">Price {{$Hall->price}} JD</p>
                                         @endif
-                                                {{-- <p class="property--location">Price: {{$Hall->price}} JD</p> --}}
+                                        {{-- <p class="property--location">Price: {{$Hall->price}} JD</p> --}}
                                     </div>
                                     <!-- .property-features end -->
                                 </div>
@@ -67,7 +67,10 @@
                         </div>
                         <!-- .property item end -->
                     </div>
-                    @endforeach
+                    @empty
+                    <h2 style="text-align: center;">Empty Halls</h2>
+                    <img src={{asset("assets/images/empty.svg")}}>
+                    @endforelse
                     <!-- .col-md-12 end -->
                 </div>
             </div>

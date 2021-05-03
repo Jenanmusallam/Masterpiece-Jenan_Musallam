@@ -15,7 +15,6 @@ class BookingController extends Controller
     {
         $Categories = Category::all();
         $Halls = Halls::all();
-        // $Booking = BookingHall::all();
         $Booking = DB::table('booking_halls')
             ->select('booking_halls.id', 'booking_halls.date', 'booking_halls.from_time', 'booking_halls.total_price', 'booking_halls.statusPayment', 'customers.fullName', 'customers.phone', 'hall_singles.name')
             ->join("customers", "booking_halls.customer_id", "customers.id")

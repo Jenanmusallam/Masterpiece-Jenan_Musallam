@@ -3,7 +3,7 @@
 ============================================ -->
 <section id="page-title" class="page-title bg-overlay bg-overlay-dark2">
     <div class="bg-section">
-        <img src="assets/images/page-titles/2.jpg" alt="Background" />
+        <img src="{{asset('assets/images/page-titles/2.jpg')}}" alt="Background" />
     </div>
     <div class="container">
         <div class="row">
@@ -14,7 +14,7 @@
                             <h1>Contact</h1>
                         </div>
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="{{asset('/')}}">Home</a></li>
                             <li class="active">Contact</li>
                         </ol>
                     </div>

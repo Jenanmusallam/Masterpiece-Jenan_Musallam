@@ -9,16 +9,6 @@
                     <div class="text-center">
                         <h1>Find Your Favorite Halls</h1>
                     </div>
-                    {{-- <form action="{{ route('search') }}" method="GET">
-                    <div class="category_search_inner">
-                        <div class="search">
-                            <input type="text" placeholder="Search..." name="search">
-                        </div>
-                        <div class="submit">
-                            <button type="submit"><i class="zmdi zmdi-search"></i></button>
-                        </div>
-                    </div>
-                    </form> --}}
                     <form class="mb-0" action="{{ route('search') }}" method="get">
                         <div class="form-box search-properties">
                             <div class="row">
@@ -27,45 +17,11 @@
                                     <div class="form-group" style="display: flex;">
                                         <input type="text" placeholder="Search..." name="search" class="form-control">
                                         <button type="submit" class="btn btn--primary btn--block"><i
-                                                class="fas fa-search"></i>
+                                                class="fa fa-search" aria-hidden="true"></i>
                                             Search</button>
-                                        {{-- <select name="search" id="location">
-                                                <option>Select Location</option>
-                                                @foreach ($Categories as $categore)
-                                                <option value="{{$categore->id}}"><a
-                                            href="CategoryPublic/{{$categore->id}}">{{$categore->name}}</a>
-                                        </option>
-                                        @endforeach
-                                        </select> --}}
-                                        {{-- <select name="select-location" id="select-location">
-                                                @foreach ($Categories as $categore)
-                                                <li><a href="CategoryPublic/{{$categore->id}}">{{$categore->name}}</a>
-                                        </li>
-                                        @endforeach
-                                        <option>Select Location</option>
-                                        <option>Amman</option>
-                                        <option>Irbid</option>
-                                        <option>Jerash</option>
-                                        <option>Ajloun</option>
-                                        <option>Mafraq</option>
-                                        <option>Zarqa</option>
-                                        <option>Madaba</option>
-                                        <option>Aqaba</option>
-                                        <option>Ma'an</option>
-                                        <option>Tafilah</option>
-                                        <option>Karak</option>
-                                        <option>Balqa</option>
-                                        </select> --}}
-
                                     </div>
                                 </div>
                                 <div class="col-xs-1 col-sm-1 col-md-1"></div>
-                                <!-- .col-md-3 end -->
-                                {{-- <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <button type="submit" class="btn btn--primary btn--block btn-sub"><i
-                                            class="fas fa-search"></i>
-                                        Search</button>
-                                </div> --}}
                             </div>
                             <!-- .row end -->
                         </div>
@@ -83,28 +39,28 @@
         <!-- Slide #1 -->
         <div class="slide--item bg-overlay bg-overlay-dark3">
             <div class="bg-section">
-                <img src="assets/images/slider/slide-bg/2.jpg" alt="background">
+                <img src="{{asset('assets/images/slider/slide-bg/2.jpg')}}" alt="background">
             </div>
         </div>
         <!-- .slide-item end -->
         <!-- Slide #2 -->
         <div class="slide--item bg-overlay bg-overlay-dark3">
             <div class="bg-section">
-                <img src="assets/images/slider/slide-bg/6.jpg" alt="background">
+                <img src="{{asset('assets/images/slider/slide-bg/6.jpg')}}" alt="background">
             </div>
         </div>
         <!-- .slide-item end -->
         <!-- Slide #3 -->
         <div class="slide--item bg-overlay bg-overlay-dark3">
             <div class="bg-section">
-                <img src="assets/images/slider/slide-bg/7.jpg" alt="background">
+                <img src="{{asset('assets/images/slider/slide-bg/7.jpg')}}" alt="background">
             </div>
         </div>
         <!-- .slide-item end -->
         <!-- Slide #4 -->
         <div class="slide--item bg-overlay bg-overlay-dark3">
             <div class="bg-section">
-                <img src="assets/images/slider/slide-bg/8.jpg" alt="background">
+                <img src="{{asset('assets/images/slider/slide-bg/8.jpg')}}" alt="background">
             </div>
         </div>
         <!-- .slide-item end -->
@@ -116,7 +72,68 @@
 </section>
 
 <!-- #property-single-slider end -->
-
+<!-- Feature
+============================================= -->
+<section id="feature" class="feature feature-1 text-center bg-white pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="heading heading-2 text-center mb-70">
+                    <h2 class="heading--title">Simple Steps</h2>
+                </div>
+                <!-- .heading-title end -->
+            </div>
+            <!-- .col-md-12 end -->
+        </div>
+        <!-- .row end -->
+        <div class="row">
+            <!-- feature Panel #1 -->
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="feature-panel">
+                    <div class="feature--icon">
+                        <img src="{{asset('assets/images/page-titles/search.svg')}}" style="height: 20vh;"
+                            alt="icon img">
+                    </div>
+                    <div class="feature--content">
+                        <h3>Search For Real Halls</h3>
+                    </div>
+                </div>
+                <!-- .feature-panel end -->
+            </div>
+            <!-- .col-md-4 end -->
+            <!-- feature Panel #2 -->
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="feature-panel">
+                    <div class="feature--icon">
+                        <img src="{{asset('assets/images/page-titles/Favorite.svg')}}" style="height: 20vh;"
+                            alt="icon img">
+                    </div>
+                    <div class="feature--content">
+                        <h3>Select Your Favorite</h3>
+                    </div>
+                </div>
+                <!-- .feature-panel end -->
+            </div>
+            <!-- .col-md-4 end -->
+            <!-- feature Panel #3 -->
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="feature-panel">
+                    <div class="feature--icon">
+                        <img src="{{asset('assets/images/page-titles/book.svg')}}" style="height: 20vh;" alt="icon img">
+                    </div>
+                    <div class="feature--content">
+                        <h3>Take Your Key</h3>
+                    </div>
+                </div>
+                <!-- .feature-panel end -->
+            </div>
+            <!-- .col-md-4 end -->
+        </div>
+        <!-- .row end -->
+    </div>
+    <!-- .container end -->
+</section>
+<!-- .feature end -->
 <!-- city-property
 ============================================= -->
 <section id="city-property" class="city-property text-center pb-70">
@@ -136,8 +153,8 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category/">
-                            <img src="assets/images/city/1.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/1">
+                            <img src="{{asset('assets/images/city/1.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Amman</h5>
@@ -154,8 +171,8 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category/">
-                            <img src="assets/images/city/2.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/2">
+                            <img src="{{asset('assets/images/city/2.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Irbid</h5>
@@ -175,8 +192,8 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category/">
-                            <img src="assets/images/city/3.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/3">
+                            <img src="{{asset('assets/images/city/3.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Jerash</h5>
@@ -193,8 +210,8 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category">
-                            <img src="assets/images/city/4.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/4">
+                            <img src="{{asset('assets/images/city/4.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Dead Sea</h5>
@@ -211,8 +228,8 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category">
-                            <img src="assets/images/city/5.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/5">
+                            <img src="{{asset('assets/images/city/5.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Aqaba</h5>
@@ -229,8 +246,8 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="property-city-item">
                     <div class="property--city-img">
-                        <a href="Category">
-                            <img src="assets/images/city/6.jpg" alt="city" class="img-responsive">
+                        <a href="CategoryPublic/6">
+                            <img src="{{asset('assets/images/city/6.jpg')}}" alt="city" class="img-responsive">
                             <div class="property--city-overlay">
                                 <div class="property--item-content">
                                     <h5 class="property--title">Al Zarqa</h5>
@@ -272,17 +289,18 @@
                     data-nav="false" data-dots="true" data-space="25" data-loop="true" data-speed="800">
                     <!-- .property-item #1 -->
                     @foreach ($DiscountHalls as $Hall)
-                    <div class="property-item">
+                    <div class="property-item" style="height: 65vh;">
                         <div class="property--img">
-                            <a href="hall/{{$Hall['id']}}">
-                                <img src="{{asset("images/".$Hall->image)}}
-                                    alt=" property image" class="img-responsive">
+                            <a href="{{asset('HallSingle/'.$Hall['id'])}}">
+                                <img src="{{asset("images/".$Hall->image)}}" alt=" property image"
+                                    class="img-responsive" style="height: 40vh;">
                                 <span class="property--status">For Sale</span>
                             </a>
                         </div>
                         <div class="property--content">
                             <div class="property--info">
-                                <h5 class="property--title"><a href="hall/{{$Hall['id']}}">{{$Hall->name}}</a></h5>
+                                <h5 class="property--title"><a
+                                        href={{asset('HallSingle/'.$Hall['id'])}}">{{$Hall->name}}</a></h5>
                                 <p class="property--location">{{$Hall->description}}</p>
                                 <p class="property--price">{{($Hall->price)-(($Hall->discount/100)*($Hall->price))}}JOD
                                 </p>
@@ -290,22 +308,6 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="property-item">
-                        <div class="property--img">
-                            <a href="#">
-                                <img src="https://www.hiamag.com/sites/default/files/styles/ph2_960_600/public/article/04/05/2017/5362626-945630472.jpg"
-                                    alt="property image" class="img-responsive">
-                                <span class="property--status">For Sale</span>
-                            </a>
-                        </div>
-                        <div class="property--content">
-                            <div class="property--info">
-                                <h5 class="property--title"><a href="#">Apartment in Long St.</a></h5>
-                                <p class="property--location">34 Long St, Jersey City, NJ 07305</p>
-                                <p class="property--price">$70,000</p>
-                            </div>
-                        </div>
-                    </div>
                     <!-- .property item end -->
                 </div>
                 <!-- .carousel end -->
@@ -317,67 +319,22 @@
     <!-- .container -->
 </section>
 <!-- #properties-carousel  end  -->
-
-<!-- Feature
+<!-- cta #1
 ============================================= -->
-<section id="feature" class="feature feature-1 text-center bg-white pb-90">
+<section id="cta" class="cta cta-1 text-center bg-overlay bg-overlay-dark pt-90">
+    <div class="bg-section"><img src="{{asset('assets/images/cta/bg-1.jpg')}}" alt="Background"></div>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="heading heading-2 text-center mb-70">
-                    <h2 class="heading--title">Simple Steps</h2>
-                </div>
-                <!-- .heading-title end -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                <h3>Join our professional team and agents to start renting your Halls</h3>
+                <a href="contact" class="btn btn--primary">Contact</a>
             </div>
-            <!-- .col-md-12 end -->
+            <!-- .col-md-6 -->
         </div>
-        <!-- .row end -->
-        <div class="row">
-            <!-- feature Panel #1 -->
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <div class="feature-panel">
-                    <div class="feature--icon">
-                        <img src="assets/images/features/icons/5.png" alt="icon img">
-                    </div>
-                    <div class="feature--content">
-                        <h3>Search For Real Halls</h3>
-                    </div>
-                </div>
-                <!-- .feature-panel end -->
-            </div>
-            <!-- .col-md-4 end -->
-            <!-- feature Panel #2 -->
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <div class="feature-panel">
-                    <div class="feature--icon">
-                        <img src="assets/images/features/icons/6.png" alt="icon img">
-                    </div>
-                    <div class="feature--content">
-                        <h3>Select Your Favorite</h3>
-                    </div>
-                </div>
-                <!-- .feature-panel end -->
-            </div>
-            <!-- .col-md-4 end -->
-            <!-- feature Panel #3 -->
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <div class="feature-panel">
-                    <div class="feature--icon">
-                        <img src="assets/images/features/icons/7.png" alt="icon img">
-                    </div>
-                    <div class="feature--content">
-                        <h3>Take Your Key</h3>
-                    </div>
-                </div>
-                <!-- .feature-panel end -->
-            </div>
-            <!-- .col-md-4 end -->
-        </div>
-        <!-- .row end -->
+        <!-- .row -->
     </div>
-    <!-- .container end -->
+    <!-- .container -->
 </section>
-<!-- .feature end -->
-
+<!-- #cta1 end -->
 
 @include('component/footer')
